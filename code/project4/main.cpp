@@ -9,14 +9,22 @@ random_device rd;
 mt19937 randomEngine(rd());
 uniform_real_distribution<double> uniformDist(0.0,1.0);
 
-ofstream outFile, outFile2;
+ofstream outFile, outFile2, outFile3, outFile4;
 
 double random(){
     return uniformDist(randomEngine);
 }
 
-void toFile(double Etemp){
-    outFile2 << Etemp << ", " << endl;
+void toFile(double Mtemp, double Etemp, double T){
+    if(T == 1.0){
+        outFile << Mtemp << ", " << endl;
+        outFile2 << Etemp << ", " << endl;
+    }
+    else if(T == 2.4){
+        outFile3 << Mtemp << ", " << endl;
+        outFile4 << Etemp << ", " << endl;
+    }
+
 }
 
 mat randomMatrix(mat &A, int L){
@@ -62,22 +70,29 @@ void MP(int L, mat &A, vec &prob, int &acceptance, double &E, double &Mtemp, dou
     E_2 += Etemp*Etemp;
     M += abs(Mtemp);
     M_2 += Mtemp*Mtemp;
-    //toFile(cycle, Etemp);
 }
 
 
-void openFiles(){
-    string outFileName = "mc_cycles.txt";
-    string outFileName2 = "energy.txt";
-    outFile.open(outFileName);
-    outFile2.open(outFileName2);
+void openFiles(double T){
+    if(T == 1.0){
+        string outFileName = "magnetizationT1.txt";
+        string outFileName2 = "energyT1.txt";
+        outFile.open(outFileName);
+        outFile2.open(outFileName2);
+    }
+    else if(T == 2.4){
+        string outFileName3 = "magnetizationT24.txt";
+        string outFileName4 = "energyT24.txt";
+        outFile3.open(outFileName3);
+        outFile4.open(outFileName4);
+    }
 }
 
 int main()
 {
 
     double k = 1.0; //J/K
-    double T = 1.0; //kT/J
+    double T = 2.4; //kT/J
     double beta = 1.0/(k*T);
     double J = 1.0;
 
@@ -85,7 +100,7 @@ int main()
 
     int L = 20;
 
-    openFiles();
+    openFiles(T);
 
     mat A = zeros(L,L);
     randomMatrix(A, L);
@@ -120,7 +135,11 @@ int main()
     int acceptance = 0;
     for(int cycles=0;cycles<=mcs;cycles++){
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
-        toFile(Etemp);
+
+        int n=50;
+        if((cycles % n) == 0){
+            toFile(Mtemp, Etemp, T);
+        }
 
     }
     double averegeE = E/(mcs); //Average energy
@@ -142,6 +161,8 @@ int main()
 
     outFile.close();
     outFile2.close();
+    outFile3.close();
+    outFile4.close();
 
     return 0;
 }

@@ -1,0 +1,35 @@
+addpath('C:\Users\sande\OneDrive\Dokumenter\GitHub\Assigment-4\code\build-project4-Desktop_Qt_5_9_2_MSVC2017_64bit-Debug') %Change to build path
+M = load('magnetization.txt'); %T = 1.0
+E = load('energy.txt'); %T = 1.0
+E2 = load('energyT24.txt'); %T = 2.4
+
+%%
+mc = linspace(1,length(E),length(E));
+mc2 = linspace(1,length(E2),length(E2));
+
+mm = linspace(1,length(M),length(M));
+
+%%
+
+% figure(1)
+% histogram(E, mc)
+% xlabel('mc cycles')
+% ylabel('Energy')
+
+figure(2) %T = 1.0
+plot(mc,E)
+ylim([-820,-680])
+xlabel('mc cycles')
+ylabel('Energy')
+
+
+figure(3) %T = 2.4
+plot(mc2,E2)
+xlabel('mc cycles')
+ylabel('Energy')
+
+figure(4) %T = 1.0
+plot(mm,-M)
+ylim([500,300]);
+xlabel('mc cycles')
+ylabel('Magnetization')
