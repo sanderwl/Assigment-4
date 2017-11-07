@@ -15,8 +15,8 @@ double random(){
     return uniformDist(randomEngine);
 }
 
-void toFile(int cycles, double Etemp){
-    outFile << cycles << ", " << Etemp << endl;
+void toFile(double Etemp){
+    outFile2 << Etemp << ", " << endl;
 }
 
 mat randomMatrix(mat &A, int L){
@@ -35,7 +35,7 @@ mat randomMatrix(mat &A, int L){
 }
 
 
-void MP(int L, mat &A, vec &prob, int &acceptance, double &E, double &Mtemp, double &E_2, double &Etemp, int cycle, double &M, double &M_2){
+void MP(int L, mat &A, vec &prob, int &acceptance, double &E, double &Mtemp, double &E_2, double &Etemp, double &M, double &M_2){
     int xp, xn, yp, yn;
     double deltaE;
     for(int x = 0; x < L; x++){
@@ -60,17 +60,15 @@ void MP(int L, mat &A, vec &prob, int &acceptance, double &E, double &Mtemp, dou
     }
     E += Etemp;
     E_2 += Etemp*Etemp;
-    M += (Mtemp);
+    M += abs(Mtemp);
     M_2 += Mtemp*Mtemp;
-    toFile(cycle, Etemp);
-
-    //cout << Etemp << endl;
+    //toFile(cycle, Etemp);
 }
 
 
 void openFiles(){
     string outFileName = "mc_cycles.txt";
-    string outFileName2 = "averegeE.txt";
+    string outFileName2 = "energy.txt";
     outFile.open(outFileName);
     outFile2.open(outFileName2);
 }
@@ -83,20 +81,18 @@ int main()
     double beta = 1.0/(k*T);
     double J = 1.0;
 
-    int mcs = 100000;
+    int mcs = 1000000;
 
-    int L = 2;
+    int L = 20;
 
     openFiles();
 
-    //mat A = zeros(L,L);
-    //randomMatrix(A, L);
-    //cout << A << endl;
-    mat A = ones(L,L);
-
-    double Etemp = 0;
+    mat A = zeros(L,L);
+    randomMatrix(A, L);
+    //mat A = ones(L,L);
 
     //Initial values of the temporary energy
+    double Etemp = 0;
     for(int x = 0; x<L; x++){
         for(int y = 0; y<L;y++){
 
@@ -109,7 +105,7 @@ int main()
 
     double E = 0;
     double E_2 = 0;
-    double Mtemp = 0;
+    double Mtemp = accu(A);
     double M = 0;
     double M_2= 0;
 
@@ -120,26 +116,27 @@ int main()
     for(int i=-8; i <= 8; i+=4){
         prob(i + 8) = exp(-i/T);
     }
-    //cout << prob << endl;
+
     int acceptance = 0;
     for(int cycles=0;cycles<=mcs;cycles++){
-        MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, cycles, M, M_2);
-        toFile(cycles, Etemp);
+        MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
+        toFile(Etemp);
 
     }
-    double averegeE = E/(L*L*mcs); //Average energy
-    double averegeESquared = E_2/(L*L*mcs);
+    double averegeE = E/(mcs); //Average energy
+    double averegeESquared = E_2/(mcs);
 
-    //double magnetic = accu(A); //Magnetic moment
     double averegeM = (M)/(mcs);
-    double averegeMSquared = (M_2/(mcs));
+    double averegeMSquared = (M_2/mcs);
 
     double PF = 2*exp(-8*J*beta) + 2*exp(8*J*beta) + 12; //Partition function
-    //double sus = beta*((M_2)/(PF) - (M*M)/(PF*PF));
-    double sus = beta*((averegeMSquared) - ((averegeM))*((averegeM)));//(L*L);
+    double sus = beta*(averegeMSquared - averegeM*averegeM);
 
-    cout << averegeE<< endl;
-    cout << averegeM << " " << averegeMSquared << endl;
+    double heat = (beta/T)*(averegeESquared - (averegeE*averegeE));
+
+    cout << averegeE << " " << averegeESquared << endl;
+    cout << averegeM << endl;
+    cout << heat << endl;
     cout << sus << endl;
 
 

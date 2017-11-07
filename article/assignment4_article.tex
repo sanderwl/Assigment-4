@@ -76,7 +76,7 @@ $$
 Z = \sum^{M}_{i = 1} e^{-\beta * E_i}
 $$ 
 
-\noindent where $\beta$ is the inverse temperature given by $\beta = \frac{1}{kT}$ where k is the Boltzmann constant and T is the temperature, so every expression with $\beta$ beneath is dependent on the temperature $T$. $E_i$ is the energy for different spin settings given by:
+\noindent where $\beta$ is the inverse temperature given by $\beta = \frac{1}{kT}$ where k is the Boltzmann constant and T is the temperature, so every expression containing $\beta$ is dependent on the temperature $T$. $E_i$ is the energy for different spin settings given by:
 
 $$
 E = -J\sum^{N}_{<kl>} s_ks_l
@@ -90,16 +90,19 @@ $$
 \caption{A two by two lattice and how they interact using the Ising model}
 \label{fig:22lattice}
 \end{figure}
-\noindent From \figref{22lattice} we see how the Ising model works on a 2x2 lattice and from this the energy is calculated. One can observe that energy is non-zero on lattices where all the objects have the same spin ($-8J$) and where the two diagonals have opposite spin from each other ($8J$). All other settings have zero energy. Lets calculate the energy where the diagonals have opposite spin to see how this works:
+\noindent From \figref{22lattice} we see how the Ising model works on a 2x2 lattice and from this the energy is calculated. One can observe that energy is non-zero on lattices where all the objects have the same spin ($-8J$) and where the two diagonals have opposite spin from each other ($8J$). All other settings have zero energy. Knowing the energy values we can calculate the mean energy $<E>$ with our specific partition function:
 
 $$
-E = -J((1*-1 + 1*-1) + (-1*1 + -1*1) + (1*-1 + 1*-1) + (-1*1 + -1*1))
+<E> = \frac{1}{Z}\sum^{M}_{i = 1} E_i e^{-\beta E_i}
 $$
 $$
-E = -J(-8) = 8J
+ = \frac{1}{2e^{-8} + 2e^{8} + 12}\sum^{16}_{1} E_i e^{-\beta E_i}
+$$
+$$
+ = \frac{16e^{-8}-16e^{8}}{2e^{-8} + 2e^{8} + 12} = -7.983928
 $$
 
-\noindent Now we can simply put the energy values into our partition function:
+\noindent Now we can simply put the same energy values into our partition function:
 
 $$
 Z = e^{-\beta * -8J} + e^{-\beta * -8J} + e^{-\beta * 8J} + e^{-\beta * 8J} + 12*e^0
@@ -114,48 +117,79 @@ $$
 M = \sum^{N}_{j = 1} s_j
 $$
 
-\noindent Unlike in the energy case, the magnetization does not depend the lattice having the same spin or that the diagonals have opposite spin. The only case where the magnetization is zero in a 2x2 lattice is when half of the objects in the lattice have negative and the other half having positive spin. Therefore we get the magnetization values:
+\noindent Unlike in the energy case, the magnetization does not depend the lattice having the same spin or that the diagonals have opposite spin. The only case where the magnetization is zero in a 2x2 lattice is when half of the objects in the lattice opposite spins. Therefore we get the magnetization values:
 
 $$
-M_i = [4 + 2 + 2 + 2 + 2 + 0 + 0 + 0 + 0 + 0 + 0 + -2 + -2 + -2 + -2 + -4] = 0
+M_i = [4 + 2 + 2 + 2 + 2 + 0 + 0 + 0 + 0 + 0 + 0 + -2 + -2 + -2 + -2 + -4]
 $$
 
-\noindent The sum of these are zero, which makes sense since these values represent all possible spin settings. To calculate the mean magnetic moment or mean magnetization we use the equation:
+\noindent To calculate the mean magnetic moment or mean magnetization we use the equation below with our calculated magnetic moment and energy values:
 
 $$
 |M| = \frac{1}{Z}\sum^{M}_{i}M_ie^{-\beta E_i}
 $$
-\\
-\noindent The mean magnetization would also be zero since we still sum all of the possible spin settings with the previously mention energy values. The specific heat is given by:
+$$
+ = \frac{1}{2e^{-8} + 2e^8 + 12}\sum^{16}_{1}M_ie^{-\beta E_i}
+$$
+$$
+ = \frac{8e^{8} + 16}{2e^{-8} + 2e^8 + 12} = 3.994643
+$$
+
+
+
+\noindent To calculate the the specific heat, one only needs to know the total number of spins of the lattice. In the 2x2 lattice case the total number of spins is 4, and remember also that $\beta J = 1$ and $k = 1$. The specific heat is then:
 
 $$
-C_V = (N-1)k(\frac{\beta J}{cosh(\beta J})^2
+C_V = \frac{1}{kT^2}(<E^2> - <E>^2)
 $$
-which already depend on $\beta$ and therefore temperature, so we don't need to rewrite the expression in any way.
-\\
-To calculate the susceptibility, one has to first calculate the the variance of the mean magnetization given by
+$$
+ = \frac{1}{kT^2}(\frac{128e^{-8} - 128e^8}{2e^{-8} + 2e^8 + 12} - (\frac{16e^{-8} - 16e^8}{2e^{-8} + 2e^8 + 12})^2)
+$$
+$$
+ = 0.128329
+$$
+
+\noindent The term $<E^2> - <E>^2$ is also called the variance of the energy and is precisely calculated just as shown above. The same variance calculation can be applied to calculating the susceptibility, but the energy terms have to be substituted for mean magnetization.
+Let's calculate the variance separate from the desired equation this time:
 
 $$
 \sigma_M^2 = <M^2>-<M>^2 = \frac{1}{Z}\sum^{M}_{i = 1}M_i^2 e^{-\beta E_i} - (\frac{1}{Z}\sum^{M}_{i = 1}M_i e^{-\beta E_i})^2
 $$
 
-\noindent We immediately observe that the second term in the above equation is equal to 0 because the sum of all magnetization is 0. However, the first term is not equal to zero because the magnetization is squared. This gives us a variance of:
-
 $$
-\sigma^2 = \frac{32}{Z}(e^{8J\beta}+1)
+ = \frac{32}{2e^{-8} + 2e^8 + 12}(e^{-8}+1) - (\frac{8e^8 + 16}{2e^{-8} + 2e^8 + 12})^2 = 0.010853
 $$
 
-\noindent Now we can calculate the susceptibility given by:
+\noindent Remember that the $\beta = 1$ in the 2x2 lattice case, so the susceptibility would be the same as the variance in that case. We would usually have to calculate the susceptibility with the following equation:
 
 $$
-X = \frac{1}{k_bT}(<M^2> - <M>^2) = \frac{1}{k_bT}\sigma^2 = \frac{32}{Zk_bT}(e^{8J\beta}+1)
+X = \frac{1}{k_bT}(<M^2> - <M>^2) = \frac{1}{k_bT}\sigma_M^2 = 0.010853
 $$
 
+\newpage
 
+\begin{center}
+{\LARGE\bf Results}
+\end{center}
 
+From the general equations in the method, the following analytical and numerical values were found:
+$$
+Analytical ,Numerical
+$$
+$$
+<E> = -7.983928 , <E> = -7.984
+$$
+$$
+<M> = 3.994643 , <M> = 3.99599
+$$
+$$
+C_V = 0.128329 , 
+$$
+$$
+X = 0.010853 , X = 0.0133519
+$$
 
-
-
+\noindent To get good results for mean energy and mean magnetic moment took very few Monte Carlo, or MC, cycles, only about 100 000. Then the values would be off only by a factor of about $10^{-3}$. The susceptibility and the specific heat took many more MC cycles and correct results started showing around $10^{8}$ for susceptibility and $XXX$ for specific heat.
 
 
 
