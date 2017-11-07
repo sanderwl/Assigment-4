@@ -33,7 +33,6 @@ title('Energy vs Monte Carlo cycles for T = 2.4')
 %Magnetization plots
 figure(4) %T = 1.0
 plot(mc,-M)
-ylim([350,450])
 xlabel('mc cycles / 50')
 ylabel('Magnetization')
 title('Magnetization vs Monte Carlo cycles for T = 1.0')
@@ -48,14 +47,14 @@ title('Magnetization vs Monte Carlo cycles for T = 2.4')
 figure(6)
 plot(mc,A)
 xlabel('mc cycles / 50')
-ylabel('Magnetization')
-title('Magnetization vs Monte Carlo cycles for T = 2.4')
+ylabel('Acceptance')
+title('Acceptance vs Monte Carlo cycles for T = 1.0')
 
 figure(7)
-plot(mc,A)
+plot(mc,A2)
 xlabel('mc cycles / 50')
-ylabel('Magnetization')
-title('Magnetization vs Monte Carlo cycles for T = 2.4')
+ylabel('Acceptance')
+title('Acceptance vs Monte Carlo cycles for T = 2.4')
 
 
 

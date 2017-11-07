@@ -24,7 +24,7 @@ void toFile(double Mtemp, double Etemp, double T, int acceptance){
     else if(T == 2.4){
         outFile3 << Mtemp << ", " << endl;
         outFile4 << Etemp << ", " << endl;
-        outFile5 << acceptance << ", " << endl;
+        outFile6 << acceptance << ", " << endl;
     }
 
 }
@@ -45,7 +45,7 @@ mat randomMatrix(mat &A, int L){
 }
 
 
-void MP(int L, mat &A, vec &prob, int &acceptance, double &E, double &Mtemp, double &E_2, double &Etemp, double &M, double &M_2){
+void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, double &E_2, double &Etemp, double &M, double &M_2){
     int xp, xn, yp, yn;
     double deltaE;
     for(int x = 0; x < L; x++){
@@ -56,7 +56,7 @@ void MP(int L, mat &A, vec &prob, int &acceptance, double &E, double &Mtemp, dou
             xn = (x - 1 + L) % L;
             yn = (y - 1 + L) % L;
 
-            deltaE = 2*A(x,y) * (  A(xp,y) + A(xn,y) + A(x, yn) + A(x, yp));
+            deltaE = 2.0 * A(x,y) * (  A(xp,y) + A(xn,y) + A(x, yn) + A(x, yp));
 
             if(random() <= prob(deltaE + 8)){
                 A(x, y) *= -1;
@@ -97,13 +97,13 @@ void openFiles(double T){
 
 int main()
 {
-
+    for(double T = 1.0; T <= 2.4; T+=1.4){
     double k = 1.0; //J/K
-    double T = 2.4; //kT/J
+    //double T = 2.4; //kT/J
     double beta = 1.0/(k*T);
     double J = 1.0;
 
-    int mcs = 1000;
+    int mcs = 10000;
 
     int L = 20;
 
@@ -145,7 +145,7 @@ int main()
     for(int cycles=0;cycles<=mcs;cycles++){
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
-        int n=100;
+        int n=1;
         if((cycles % n) == 0){
             toFile(Mtemp, Etemp, T, acceptance);
         }
@@ -162,10 +162,11 @@ int main()
 
     double heat = (beta*(averegeESquared - (averegeE*averegeE)))/T;
 
-    cout << averegeE << " " << averegeESquared << endl;
-    cout << averegeM << endl;
-    cout << heat << endl;
-    cout << sus << endl;
+    cout << "Average energy: " << averegeE << " and the square of average energy: " << averegeESquared << " while T = " << to_string(T) << endl;
+    cout << "Average magnetization: " <<  " while T = " << to_string(T) << endl;
+    cout << "Specific heat: " << heat << " while T = " << to_string(T) << endl;
+    cout << "Susceptibility: " << sus << " while T = " << to_string(T) << endl;
+    }
 
     outFile.close();
     outFile2.close();
