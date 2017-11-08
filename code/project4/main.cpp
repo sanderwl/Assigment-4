@@ -47,18 +47,21 @@ void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, doub
     for(int x = 0; x < L; x++){
         for(int y = 0; y < L; y++){
 
-            xp = (x + 1) % L;
-            yp = (y + 1) % L;
-            xn = (x - 1 + L) % L;
-            yn = (y - 1 + L) % L;
+            int xrand = round(random()*(L-1));
+            int yrand = round(random()*(L-1));
 
-            deltaE = 2.0 * A(x,y) * (  A(xp,y) + A(xn,y) + A(x, yn) + A(x, yp));
+            xp = (xrand + 1) % L;
+            yp = (yrand + 1) % L;
+            xn = (xrand - 1 + L) % L;
+            yn = (yrand - 1 + L) % L;
+
+            deltaE = 2.0 * A(xrand,yrand) * (  A(xp,yrand) + A(xn,yrand) + A(xrand, yn) + A(xrand, yp));
 
             if(random() <= prob(deltaE + 8)){
-                A(x, y) *= -1;
+                A(xrand, yrand) *= -1;
                 Etemp += deltaE;
 
-                Mtemp += 2*A(x,y); //Mean magnetic moment
+                Mtemp += 2*A(xrand,yrand); //Mean magnetic moment
                 acceptance += 1;
 
             }
@@ -93,17 +96,15 @@ int main()
     double beta = 1.0/(k*T);
     double J = 1.0;
 
-    int mcs = 1000;
+    int mcs = 10000;
 
     int L = 20;
 
     openFiles(T);
 
     mat A = ones(L,L);
-    randomMatrix(A, L);
+    //randomMatrix(A, L);
     //cout << A << endl;
-
-    //mat A = ones(L,L);
 
     //Initial values of the temporary energy
     double Etemp = 0;
@@ -135,10 +136,12 @@ int main()
     for(int cycles=0;cycles<=mcs;cycles++){
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
-        int n=1;
+
+        int n=100;
         if((cycles % n) == 0){
             toFile(Mtemp, Etemp, T, acceptance);
         }
+
 
     }
 
@@ -153,10 +156,10 @@ int main()
     double PF = 2*exp(-8*J*beta) + 2*exp(8*J*beta) + 12; //Partition function
     double sus = beta*(averegeMSquared - averegeM*averegeM);
 
-    double heat = (beta*(averegeESquared - (averegeE*averegeE)))/T;
+    double heat = (beta*(averegeESquared - averegeE*averegeE))/T;
 
     cout << endl << "Average energy: " << averegeE << " and the square of average energy: " << averegeESquared << " while T = " << to_string(T) << endl;
-    cout << "Average magnetization: " <<  " while T = " << to_string(T) << endl;
+    cout << "Average magnetization: " << averegeM << " while T = " << to_string(T) << endl;
     cout << "Specific heat: " << heat << " while T = " << to_string(T) << endl;
     cout << "Susceptibility: " << sus << " while T = " << to_string(T) << endl;
 

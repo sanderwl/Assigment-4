@@ -24,29 +24,33 @@ mcA2 = linspace(1,length(A2),length(A2));
 %Energy plots
 figure(2) %T = 1.0
 plot(mcE,E)
-%ylim([-850,-750])
-xlabel('mc cycles / 50')
+%ylim([-820,-780])
+grid on
+xlabel('mc cycles / 100')
 ylabel('Energy')
-title('Energy vs Monte Carlo cycles for T = 1.0')
+title('Energy for T = 1.0 and all initial spins up')
 
 figure(3) %T = 2.4
 plot(mcE2,E2)
-xlabel('mc cycles / 50')
+grid on
+xlabel('mc cycles / 100')
 ylabel('Energy')
-title('Energy vs Monte Carlo cycles for T = 2.4')
+title('Energy for T = 2.4 and all initial spins up')
 
 %Magnetization plots
 figure(4) %T = 1.0
-plot(mcM,-M)
-xlabel('mc cycles / 50')
+plot(mcM,M)
+grid on
+xlabel('mc cycles / 100')
 ylabel('Magnetization')
-title('Magnetization vs Monte Carlo cycles for T = 1.0')
+title('Magnetization for T = 1.0 and all initial spins up')
 
 figure(5) %T = 2.4
 plot(mcM2,-M2)
-xlabel('mc cycles / 50')
+grid on
+xlabel('mc cycles / 100')
 ylabel('Magnetization')
-title('Magnetization vs Monte Carlo cycles for T = 2.4')
+title('Magnetization for T = 2.4 and all initial spins up')
 
 %Acceptance plot
 figure(6)
@@ -54,15 +58,20 @@ plot(Acc(:,1),Acc(:,2))
 grid on
 xlabel('Temperature')
 ylabel('Acceptance')
-title('Acceptance vs temperature for mcs = 1000')
+title('Acceptance for mcs = 1000 and random initial matrix')
 
 figure(7)
 plot(mcA,A)
 grid on
-xlabel('cycles')
+xlabel('number of mc cycles')
 ylabel('Acceptance')
-title('Acceptance vs Monte Carlo cycles')
+title('Acceptance for T = 1.0 and random initial matrix')
 
-
+figure(8)
+plot(mcA2,A2)
+grid on
+xlabel('Number of mc cycles')
+ylabel('Acceptance')
+title('Acceptance for T = 2.4 and random initial matrix')
 
 

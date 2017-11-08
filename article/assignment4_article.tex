@@ -177,20 +177,51 @@ $$
 Analytical ,Numerical
 $$
 $$
-<E> = -7.983928 , <E> = -7.984
+<E> = -7.983928 , <E> = -7.98437
 $$
 $$
-<M> = 3.994643 , <M> = 3.99599
+<M> = 3.994643 , <M> = 3.99483
 $$
 $$
-C_V = 0.128329 , 
+C_V = 0.128329 , C_V = 0.124812
 $$
 $$
-X = 0.016004 , X = 0.0133519
+X = 0.016004 , X = 0.0153613
 $$
 
-\noindent To get good results for mean energy and mean magnetic moment took very few Monte Carlo, or MC, cycles, only about 100 000. Then the values would be off only by a factor of about $10^{-3}$. The susceptibility and the specific heat took many more MC cycles and correct results started showing around $10^{8}$ for susceptibility and $XXX$ for specific heat.
+\noindent To get good results for mean energy and mean magnetic moment took very few Monte Carlo, or MC, cycles, only about 100 000. Then the values would be off only by a factor of about $10^{-3}$. The susceptibility and the specific heat took more MC cycles and correct results started showing around $10^{6}$ for susceptibility and specific heat.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{energyT1random}
+\includegraphics[width=0.7\textwidth]{energyT24random}
+\caption{Energy versus Monte Carlo cycles for T = 1.0 and T = 2.4 with a random initial matrix}
+\label{fig:energyrandom}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{energyT1upspin}
+\includegraphics[width=0.7\textwidth]{energyT24upspin}
+\caption{Energy versus Monte Carlo cycles for T = 1.0 and T = 2.4 with initial spin upwards}
+\label{fig:energyupspin}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{magnetizationT1random}
+\includegraphics[width=0.7\textwidth]{magnetizationT24random}
+\caption{Magnetization versus Monte Carlo cycles for T = 1.0 and T = 2.4 with a random initial matrix}
+\label{fig:magneticrandom}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{magnetizationT1upspin}
+\includegraphics[width=0.7\textwidth]{magnetizationT24upspin}
+\caption{Magnetization versus Monte Carlo cycles for T = 1.0 and T = 2.4 with initial spin upwards}
+\label{fig:magneticupspin}
+\end{figure}
 
 
 
