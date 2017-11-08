@@ -9,24 +9,20 @@ random_device rd;
 mt19937 randomEngine(rd());
 uniform_real_distribution<double> uniformDist(0.0,1.0);
 
-ofstream outFile, outFile2, outFile3, outFile4, outFile5, outFile6;
+ofstream outFile, outFile2, outFile3, outFile4;
 
 double random(){
     return uniformDist(randomEngine);
 }
 
 void toFile(double Mtemp, double Etemp, double T, int acceptance){
-    if(T == 1.0){
-        outFile << Mtemp << ", " << endl;
-        outFile2 << Etemp << ", " << endl;
-        outFile5 << acceptance << ", " << endl;
-    }
-    else if(T == 2.4){
-        outFile3 << Mtemp << ", " << endl;
-        outFile4 << Etemp << ", " << endl;
-        outFile6 << acceptance << ", " << endl;
-    }
+    outFile << Mtemp << ", " << endl;
+    outFile2 << Etemp << ", " << endl;
+    outFile4 << acceptance << ", " << endl;
+}
 
+void toFile2(int acceptance, double T){
+    outFile3 << T << ", " << acceptance << endl;
 }
 
 mat randomMatrix(mat &A, int L){
@@ -76,34 +72,28 @@ void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, doub
 
 
 void openFiles(double T){
-    if(T == 1.0){
-        string outFileName = "magnetizationT1.txt";
-        string outFileName2 = "energyT1.txt";
-        string outFileName5 = "acceptanceT1.txt";
+        string outFileName = "magnetization" + to_string(T) + ".txt";
+        string outFileName2 = "energy" + to_string(T) + ".txt";
+        string outFileName4 = "acceptanceMC" + to_string(T) + ".txt";
         outFile.open(outFileName);
         outFile2.open(outFileName2);
-        outFile5.open(outFileName5);
-
-    }
-    else if(T == 2.4){
-        string outFileName3 = "magnetizationT24.txt";
-        string outFileName4 = "energyT24.txt";
-        string outFileName6 = "acceptanceT24.txt";
-        outFile3.open(outFileName3);
         outFile4.open(outFileName4);
-        outFile6.open(outFileName6);
-    }
+}
+
+void openFiles2(){
+    string outFileName3 = "TempAcceptance.txt";
+    outFile3.open(outFileName3);
 }
 
 int main()
 {
+    openFiles2();
     for(double T = 1.0; T <= 2.4; T+=1.4){
     double k = 1.0; //J/K
-    //double T = 2.4; //kT/J
     double beta = 1.0/(k*T);
     double J = 1.0;
 
-    int mcs = 10000;
+    int mcs = 1000;
 
     int L = 20;
 
@@ -151,6 +141,9 @@ int main()
         }
 
     }
+
+    toFile2(acceptance, T);
+
     double averegeE = E/(mcs); //Average energy
     double averegeESquared = E_2/(mcs);
 
@@ -162,18 +155,18 @@ int main()
 
     double heat = (beta*(averegeESquared - (averegeE*averegeE)))/T;
 
-    cout << "Average energy: " << averegeE << " and the square of average energy: " << averegeESquared << " while T = " << to_string(T) << endl;
+    cout << endl << "Average energy: " << averegeE << " and the square of average energy: " << averegeESquared << " while T = " << to_string(T) << endl;
     cout << "Average magnetization: " <<  " while T = " << to_string(T) << endl;
     cout << "Specific heat: " << heat << " while T = " << to_string(T) << endl;
     cout << "Susceptibility: " << sus << " while T = " << to_string(T) << endl;
-    }
 
     outFile.close();
     outFile2.close();
-    outFile3.close();
     outFile4.close();
-    outFile5.close();
-    outFile6.close();
+    }
+    outFile3.close();
+
+
 
     return 0;
 }

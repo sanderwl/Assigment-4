@@ -12,7 +12,7 @@ Acc = load('TempAcceptance.txt');
 A = load('acceptanceMC1.000000.txt');
 mcA = linspace(1,length(A),length(A));
 A2 = load('acceptanceMC2.400000.txt');
-mcA2 = linspace(1,length(A2),length(A2));
+mcA2 = linspace(1,length(E2),length(E2));
 
 %%
 
@@ -55,14 +55,6 @@ grid on
 xlabel('Temperature')
 ylabel('Acceptance')
 title('Acceptance vs temperature for mcs = 1000')
-
-figure(7)
-plot(mcA,A)
-grid on
-xlabel('cycles')
-ylabel('Acceptance')
-title('Acceptance vs Monte Carlo cycles')
-
 
 
 
