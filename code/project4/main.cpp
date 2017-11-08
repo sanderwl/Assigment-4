@@ -96,9 +96,9 @@ int main()
     double beta = 1.0/(k*T);
     double J = 1.0;
 
-    int mcs = 10000;
+    int mcs = 100000;
 
-    int L = 20;
+    int L = 2;
 
     openFiles(T);
 

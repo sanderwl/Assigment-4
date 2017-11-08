@@ -173,55 +173,136 @@ $$
 \end{center}
 
 From the general equations in the method, the following analytical and numerical values were found:
-$$
-Analytical ,Numerical
-$$
-$$
-<E> = -7.983928 , <E> = -7.98437
-$$
-$$
-<M> = 3.994643 , <M> = 3.99483
-$$
-$$
-C_V = 0.128329 , C_V = 0.124812
-$$
-$$
-X = 0.016004 , X = 0.0153613
-$$
 
-\noindent To get good results for mean energy and mean magnetic moment took very few Monte Carlo, or MC, cycles, only about 100 000. Then the values would be off only by a factor of about $10^{-3}$. The susceptibility and the specific heat took more MC cycles and correct results started showing around $10^{6}$ for susceptibility and specific heat.
+\begin{table} [H]
+\caption{Analytical and numerical solutions} \label{tab:table1}
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline
+Type & Analytical & Numerical & MC cycles needed\\
+\hline
+$<E>$ & -7.983928 & -7.98437 & 10 000\\
+\hline
+$<M>$ & 3.994643 & 3.99483 & 10 000\\
+\hline
+$C_V$ & 0.128329 & 0.124812 & 100 000\\
+\hline
+$<X>$ & 0.016004 & 0.0153613 & 100 000\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\noindent To get good results for mean energy and mean magnetic moment took very few Monte Carlo, or MC, cycles, only about 10 000. Then the values would be off only by a factor of about $10^{-3}$. The susceptibility and the specific heat took more MC cycles and correct results started showing around $10^{5}$ for susceptibility and specific heat. For $10^4$ both the specific heat and susceptibility were unstable.
 
 \begin{figure}[H]
-\centering
+\centerline{
 \includegraphics[width=0.7\textwidth]{energyT1random}
 \includegraphics[width=0.7\textwidth]{energyT24random}
+}
 \caption{Energy versus Monte Carlo cycles for T = 1.0 and T = 2.4 with a random initial matrix}
 \label{fig:energyrandom}
 \end{figure}
 
 \begin{figure}[H]
-\centering
+\centerline{
 \includegraphics[width=0.7\textwidth]{energyT1upspin}
 \includegraphics[width=0.7\textwidth]{energyT24upspin}
+}
 \caption{Energy versus Monte Carlo cycles for T = 1.0 and T = 2.4 with initial spin upwards}
 \label{fig:energyupspin}
 \end{figure}
 
 \begin{figure}[H]
-\centering
+\centerline{
 \includegraphics[width=0.7\textwidth]{magnetizationT1random}
 \includegraphics[width=0.7\textwidth]{magnetizationT24random}
+}
 \caption{Magnetization versus Monte Carlo cycles for T = 1.0 and T = 2.4 with a random initial matrix}
 \label{fig:magneticrandom}
 \end{figure}
 
 \begin{figure}[H]
-\centering
+\centerline{
 \includegraphics[width=0.7\textwidth]{magnetizationT1upspin}
 \includegraphics[width=0.7\textwidth]{magnetizationT24upspin}
+}
 \caption{Magnetization versus Monte Carlo cycles for T = 1.0 and T = 2.4 with initial spin upwards}
 \label{fig:magneticupspin}
 \end{figure}
+
+\noindent We can see from \figref{energyrandom}, \figref{energyupspin}, \figref{magneticrandom} and \figref{magneticupspin} that the mean energy and magnetization quickly approaches it's equilibrium state when the temperature equals 1. There are of coarse fluctuations after the mean energy and magnetization has reached it's equilibrium state, but the value tends to jump back to to the equilibrium state. Another observation is that the mean energy and magnetization value are more unstable if one starts with an initial matrix where all the spins are oriented upwards. The values become even more unstable when the temperature is increased to 2.4, and also the value of the equilibrium state is changed. 
+
+\begin{table} [H]
+\caption{EQ values for energy} \label{tab:table2}
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline
+Orientation & Temperature & EQ state & max MC cycles needed\\
+\hline
+Random & 1.0 & -790.581 & 600\\
+\hline
+Random & 2.4 & -496.494 & 1000\\
+\hline
+Upwards & 1.0 & -798.96 & 1\\
+\hline
+Upwards & 2.4 & -493.996 & 300\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[H]
+\caption{EQ values for magnetization} \label{tab:table3}
+\centerline{
+\begin{tabular}{|c|c|c|c|}
+\hline
+Orientation & Temperature & EQ state & max MC cycles needed\\
+\hline
+Random & 1.0 & 398.762 & ???\\
+\hline
+Random & 2.4 & 165.209 & ???\\
+\hline
+Upwards & 1.0 & 399.732 & 1\\
+\hline
+Upwards & 2.4 & 176.087 & ???\\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\begin{figure}[H]
+\centerline{
+\includegraphics[width=0.7\textwidth]{acceptanceMCT1random}
+\includegraphics[width=0.7\textwidth]{acceptanceMCT24random}
+}
+\caption{Acceptance versus Monte Carlo cycles for T = 1.0 and T = 2.4 with a random initial matrix}
+\label{fig:acceptancerandom}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{
+\includegraphics[width=0.7\textwidth]{acceptanceMCT1upspin}
+\includegraphics[width=0.7\textwidth]{acceptanceMCT24upspin}
+}
+\caption{Acceptance versus Monte Carlo cycles for T = 1.0 and T = 2.4 with initial spin upwards}
+\label{fig:acceptanceupspin}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{
+\includegraphics[width=0.7\textwidth]{acceptanceVStrandom}
+\includegraphics[width=0.7\textwidth]{acceptanceVStupspin}
+}
+\caption{Acceptance versus temperature for a random initial matrix and with initial spin upwards}
+\label{fig:acceptancetemp}
+\end{figure}
+
+\noindent Acceptance is apparently also dependent on both temperature and the initial state of the spins. From figure \figref{acceptancerandom} one can observe that with higher temperature the number of accepted values increase by a factor of $10$. For $T = 1.0$, one can also observe that the acceptance spikes for few Monte Carlo cycles. 
+\\
+If the initial spins are all positive like in \figref{acceptanceupspin}, the acceptance becomes more linear. The line for $T = 1.0$ is more squiggly than the straighter line for $T = 2.4$. The ladder does not spike for few Monte Carlo cycles in this case.
+\\
+From \figref{acceptancetemp}, one can observe that the curves are not linear. The curve based on a randomly generated initial matrix is uneven at low temperatures, but smooths out when $T$ increases. When the initial matrix only consist positive spins, the curve is smooth throughout. These two plots are plotted to a maximum temperature of $3.0$, so one would have an idea of how the acceptance would evolve after $T = 2.4$. 
 
 
 

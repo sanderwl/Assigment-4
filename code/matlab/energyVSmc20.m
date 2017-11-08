@@ -26,14 +26,14 @@ figure(2) %T = 1.0
 plot(mcE,E)
 %ylim([-820,-780])
 grid on
-xlabel('mc cycles / 100')
+xlabel('number of mc cycles')
 ylabel('Energy')
 title('Energy for T = 1.0 and all initial spins up')
 
 figure(3) %T = 2.4
 plot(mcE2,E2)
 grid on
-xlabel('mc cycles / 100')
+xlabel('number of mc cycles')
 ylabel('Energy')
 title('Energy for T = 2.4 and all initial spins up')
 
@@ -41,14 +41,14 @@ title('Energy for T = 2.4 and all initial spins up')
 figure(4) %T = 1.0
 plot(mcM,M)
 grid on
-xlabel('mc cycles / 100')
+xlabel('number of mc cycles')
 ylabel('Magnetization')
 title('Magnetization for T = 1.0 and all initial spins up')
 
 figure(5) %T = 2.4
 plot(mcM2,-M2)
 grid on
-xlabel('mc cycles / 100')
+xlabel('number of mc cycles')
 ylabel('Magnetization')
 title('Magnetization for T = 2.4 and all initial spins up')
 
