@@ -96,9 +96,9 @@ int main()
     double beta = 1.0/(k*T);
     double J = 1.0;
 
-    int mcs = 100000;
+    int mcs = 1000000;
 
-    int L = 2;
+    int L = 20;
 
     openFiles(T);
 
@@ -136,8 +136,7 @@ int main()
     for(int cycles=0;cycles<=mcs;cycles++){
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
-
-        int n=100;
+        int n=1;
         if((cycles % n) == 0){
             toFile(Mtemp, Etemp, T, acceptance);
         }
@@ -158,10 +157,11 @@ int main()
 
     double heat = (beta*(averegeESquared - averegeE*averegeE))/T;
 
-    cout << endl << "Average energy: " << averegeE << " and the square of average energy: " << averegeESquared << " while T = " << to_string(T) << endl;
+    cout << endl << "Average energy: " << averegeE << " while T = " << to_string(T) << endl;
     cout << "Average magnetization: " << averegeM << " while T = " << to_string(T) << endl;
     cout << "Specific heat: " << heat << " while T = " << to_string(T) << endl;
     cout << "Susceptibility: " << sus << " while T = " << to_string(T) << endl;
+    cout << "Variance: " << averegeESquared - averegeE*averegeE << " while T = " << to_string(T) << endl;
 
     outFile.close();
     outFile2.close();

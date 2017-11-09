@@ -24,7 +24,6 @@ mcA2 = linspace(1,length(A2),length(A2));
 %Energy plots
 figure(2) %T = 1.0
 plot(mcE,E)
-%ylim([-820,-780])
 grid on
 xlabel('number of mc cycles')
 ylabel('Energy')
@@ -52,22 +51,40 @@ xlabel('number of mc cycles')
 ylabel('Magnetization')
 title('Magnetization for T = 2.4 and all initial spins up')
 
+%Abs Mag Plotter
+figure(6) %T = 1.0
+mag = abs(M);
+plot(mcM,mag)
+ylim([399,401])
+grid on
+xlabel('number of mc cycles')
+ylabel('Magnetization')
+title('Absolute value of magnetization for T = 1.0 and random initial matrix')
+
+figure(7) %T = 2.4
+mag2 = abs(M2);
+plot(mcM2,mag2)
+grid on
+xlabel('number of mc cycles')
+ylabel('Magnetization')
+title('Absolute value of magnetization for T = 2.4 and random initial matrix')
+
 %Acceptance plot
-figure(6)
+figure(8)
 plot(Acc(:,1),Acc(:,2))
 grid on
 xlabel('Temperature')
 ylabel('Acceptance')
 title('Acceptance for mcs = 1000 and random initial matrix')
 
-figure(7)
+figure(9)
 plot(mcA,A)
 grid on
 xlabel('number of mc cycles')
 ylabel('Acceptance')
 title('Acceptance for T = 1.0 and random initial matrix')
 
-figure(8)
+figure(10)
 plot(mcA2,A2)
 grid on
 xlabel('Number of mc cycles')

@@ -224,6 +224,15 @@ $<X>$ & 0.016004 & 0.0153613 & 100 000\\
 
 \begin{figure}[H]
 \centerline{
+\includegraphics[width=0.7\textwidth]{absmagnetizationT1random}
+\includegraphics[width=0.7\textwidth]{absmagnetizationT24random}
+}
+\caption{Absolute value of magnetization versus 10 000 Monte Carlo cycles for T = 1.0 and T = 2.4 with a random initial matrix}
+\label{fig:absmagneticrandom}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{
 \includegraphics[width=0.7\textwidth]{magnetizationT1upspin}
 \includegraphics[width=0.7\textwidth]{magnetizationT24upspin}
 }
@@ -231,7 +240,16 @@ $<X>$ & 0.016004 & 0.0153613 & 100 000\\
 \label{fig:magneticupspin}
 \end{figure}
 
-\noindent We can see from \figref{energyrandom}, \figref{energyupspin}, \figref{magneticrandom} and \figref{magneticupspin} that the mean energy and magnetization quickly approaches it's equilibrium state when the temperature equals 1. There are of coarse fluctuations after the mean energy and magnetization has reached it's equilibrium state, but the value tends to jump back to to the equilibrium state. Another observation is that the mean energy and magnetization value are more unstable if one starts with an initial matrix where all the spins are oriented upwards. The values become even more unstable when the temperature is increased to 2.4, and also the value of the equilibrium state is changed. 
+\begin{figure}[H]
+\centerline{
+\includegraphics[width=0.7\textwidth]{absmagnetizationT1upspin}
+\includegraphics[width=0.7\textwidth]{absmagnetizationT24upspin}
+}
+\caption{Absolute value of magnetization versus 10 000 Monte Carlo cycles for T = 1.0 and T = 2.4 with initial spin upwards}
+\label{fig:absmagneticupspin}
+\end{figure}
+
+\noindent We can see from \figref{energyrandom}, \figref{energyupspin}, \figref{magneticrandom} and \figref{magneticupspin} that the mean energy and magnetization quickly approaches it's equilibrium state when the temperature equals 1. There are of coarse fluctuations after the mean energy and magnetization has reached it's equilibrium state, but the value tends to jump back to to the equilibrium state. Another observation is that the mean energy and magnetization value are more unstable if one starts with an initial matrix where all the spins are oriented upwards. The values become even more unstable when the temperature is increased to 2.4, and also the value of the equilibrium state is changed.
 
 \begin{table} [H]
 \caption{EQ values for energy} \label{tab:table2}
@@ -303,6 +321,19 @@ Upwards & 2.4 & 176.087 & ???\\
 If the initial spins are all positive like in \figref{acceptanceupspin}, the acceptance becomes more linear. The line for $T = 1.0$ is more squiggly than the straighter line for $T = 2.4$. The ladder does not spike for few Monte Carlo cycles in this case.
 \\
 From \figref{acceptancetemp}, one can observe that the curves are not linear. The curve based on a randomly generated initial matrix is uneven at low temperatures, but smooths out when $T$ increases. When the initial matrix only consist positive spins, the curve is smooth throughout. These two plots are plotted to a maximum temperature of $3.0$, so one would have an idea of how the acceptance would evolve after $T = 2.4$. 
+
+\begin{figure}[H]
+\centerline{
+\includegraphics[width=0.7\textwidth]{energyappearanceT24random}
+\includegraphics[width=0.7\textwidth]{energyappearanceT24upspin}
+}
+\caption{Number of appearances per energy value for a random initial matrix and with initial spin upwards when T = 2.4}
+\label{fig:energyappearance}
+\end{figure}
+
+\noindent With a randomly generated initial matrix, the variance computed in c++ becomes 3226.62. The calculated variance from the energy becomes 3226.9 for $10^6$ MC cycles (calculated in MatLab script "howmanytimes.m"). This gives great confidence in the variance. For an initial matrix where all the spins point upwards, the calculated variance in c++ becomes 3236.05. The variance calculated from energy values in MatLab becomes 3236.3, again showing the stability of the variance for $10^6$ MC cycles. With fewer MC cycles, the two variances calculated does not correlate.
+\\
+One can observe from \figref{energyappearance} that the curves are slightly skewed towards the higher energy values. The curve is bell shaped and centred around the equilibrium state for the lattice at temperature $T = 2.4$ which is -$790$. 
 
 
 
