@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.2)  13 NOV 2017 15:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.2)  13 NOV 2017 16:34
 entering extended mode
 **./assignment4_article.tex
 (assignment4_article.tex
@@ -983,25 +983,26 @@ File: energyappearanceT24upspin.jpg Graphic file (type jpg)
 <use energyappearanceT24upspin.jpg>
 Package pdftex.def Info: energyappearanceT24upspin.jpg used on input line 335.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
- [11 <./energyappearanceT24random.jpg> <./energyappearanceT24upspin.jpg>] [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 385.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 385.
+ [11 <./energyappearanceT24random.jpg> <./energyappearanceT24upspin.jpg>] [12] 
+[13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 413.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 413.
  (assignment4_article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 385.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 385.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 413.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 413.
 Package rerunfilecheck Info: File `assignment4_article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 385.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 413.
  ) 
 Here is how much of TeX's memory you used:
- 9921 strings out of 493323
- 146018 string characters out of 3139066
- 251517 words of memory out of 3000000
- 13291 multiletter control sequences out of 15000+200000
+ 9924 strings out of 493323
+ 146053 string characters out of 3139066
+ 251584 words of memory out of 3000000
+ 13292 multiletter control sequences out of 15000+200000
  8702 words of font info for 33 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,8n,40p,1444b,322s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,8n,40p,1444b,326s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
@@ -1011,9 +1012,9 @@ nts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.p
 fb>
-Output written on assignment4_article.pdf (13 pages, 2018637 bytes).
+Output written on assignment4_article.pdf (14 pages, 2020145 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
- 28 named destinations out of 1000 (max. 500000)
+ 171 PDF objects out of 1000 (max. 8388607)
+ 30 named destinations out of 1000 (max. 500000)
  111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

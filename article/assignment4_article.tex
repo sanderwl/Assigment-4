@@ -328,7 +328,7 @@ If the initial spins are all positive like in \figref{acceptanceupspin}, the acc
 \\
 From \figref{acceptancetemp}, one can observe that the curves are not linear. The curve based on a randomly generated initial matrix is uneven at low temperatures, but smooths out when $T$ increases. When the initial matrix only consist positive spins, the curve is smooth throughout. These two plots are plotted to a maximum temperature of $3.0$, so one would have an idea of how the acceptance would evolve after $T = 2.4$. 
 
-\begin{figure}[H]
+\begin{figure}
 \centerline{
 \includegraphics[width=0.7\textwidth]{energyappearanceT24random}
 \includegraphics[width=0.7\textwidth]{energyappearanceT24upspin}
@@ -337,12 +337,40 @@ From \figref{acceptancetemp}, one can observe that the curves are not linear. Th
 \label{fig:energyappearance}
 \end{figure}
 
-\noindent With a randomly generated initial matrix, the variance computed in c++ becomes 3226.62. The calculated variance from the energy becomes 3226.9 for $10^6$ MC cycles (calculated in MatLab script "howmanytimes.m"). This gives great confidence in the variance. For an initial matrix where all the spins point upwards, the calculated variance in c++ becomes 3236.05. The variance calculated from energy values in MatLab becomes 3236.3, again showing the stability of the variance for $10^6$ MC cycles. With fewer MC cycles, the two variances calculated does not correlate.
-\\
+\noindent With a randomly generated initial matrix, the variance computed in c++ becomes 3226.62. The calculated variance from the energy becomes 3226.9 for $10^6$ MC cycles (calculated in MatLab script "howmanytimes.m"). This gives great confidence in the variance. For an initial matrix where all the spins point upwards, the calculated variance in c++ becomes 3236.05. The variance calculated from energy values in MatLab becomes 3236.3, again showing the stability of the variance for $10^6$ MC cycles. With fewer MC cycles, the two variances calculated does not correlate. Other variances 
+\begin{table}[H]
+\caption{Variance for different temperatures} \label{tab:table4}
+\centerline{
+\begin{tabular}{|c|c|}
+  Temperature & Variance\\
+\hline
+  T=1.0 & 10.1076\\
+\hline
+  T=1.25 & 52.9558\\
+\hline
+  T=1.50 & 181.261\\
+\hline
+  T=1.75 & 478.219\\
+\hline
+  T=2.0 & 1157.08\\
+\hline 
+  T=2.25 & 3145.36\\
+\hline 
+  T= 2.50 & 2479.22 \\
+\hline 
+  T=2.75 & 1690.69\\
+\hline
+  T=3.0 & 1445.91\\
+\hline
+\end{tabular}
+}
+\end{table}
+
 One can observe from \figref{energyappearance} that the curves are slightly skewed towards the higher energy values. The curve is bell shaped and somewhat centred around the equilibrium state for the lattice at temperature $T = 2.4$ which is $-497$ and $-493$. 
 
 \noindent time for 60x60 and 1mill cycles = 3996.57 seconds
 \noindent time for 80x80 and 1mill cycles = 7081.15 seconds
+\noindent time for 100x100 and 1mill cycles = 11176.2 seconds
 
 \newpage
 
@@ -350,9 +378,9 @@ One can observe from \figref{energyappearance} that the curves are slightly skew
 {\LARGE\bf Discussion}
 \end{center}
 
-\noindent Comparing Table \ref{tab:table2} and to \figref{energyrandom} and \figref{energyupspin} one can observe that the graph approaches the the equilibrium value stated in the table. This is very clear for $T = 1.0$, but when $T = 2.4$, the energy seems to be jump around more which is natural due to the increased energy in the system (kilde). Even though the value does not stay at equilibrium, the energy is still said to have reached equilibrium as stated in Table \ref{tab:table2} after a certain number of Monte Carlo cycles.
+\noindent Comparing Table \ref{tab:table2} and to \figref{energyrandom} and \figref{energyupspin} one can observe that the graph approaches the equilibrium value stated in the table. This is very clear for $T = 1.0$, but when $T = 2.4$, the energy seems to be jump around more which is natural due to the increased energy in the system (kilde). Even though the value does not stay at equilibrium, the energy is still said to have reached equilibrium as stated in Table \ref{tab:table2} after a certain number of Monte Carlo cycles.
 \\
-The magnetization plotted on \figref{magneticrandom} \figref{magneticupspin} show the magnetization without the absolute value and tells us that the magnetization actually jumps from positive to negative magnetization rather quickly and frequent after reaching equilibrium. The reason for this is because the energy values are equal for symmetric magnetization values around the equilibrium state (kilde). This makes it easy for the magnetization to make these kind of leaps. Looking at \figref{absmagneticrandom} and \figref{absmagneticupspin}, the absolute value of the magnetization, we lose the above understanding, but we get the right values for the equilibrium state.
+The magnetization plotted on \figref{magneticrandom} \figref{magneticupspin} show the magnetization without the absolute value and tells us that the magnetization actually jumps from positive to negative magnetization rather quickly and frequent after reaching equilibrium. The reason for this is because the energy values are equal for symmetric magnetization values around the equilibrium state (kilde). This makes it easy for the magnetization to make these kind of leaps. Looking at \figref{absmagneticrandom} and \figref{absmagneticupspin}, the absolute value of the magnetization, we lose the above understanding, but we get the correct values, as calculated in c++, for the equilibrium state.
 \\
 This statement is only true when $T = 2.4$, because one can observe that when $T = 1.0$ the magnetization does not fluctuate for positive and negative values. It seems as the magnetization reaches it equilibrium state and then shortly jump to some negative value, then right back to the equilibrium value. The reason for this is because the energy in the system is too low for the magnetization to make any great leaps (kilde). From the Boltzmann distribution we can see this mathematically:
 
@@ -360,7 +388,7 @@ $$
 w_i = e^{-E_i/T}
 $$
 
-\noindent where $w_i$ is the probability, $E_i$ is the energy for different orientations of the matrix and $T$ is the temperature. One can immediately see that when the temperature increase, the probability decreases for low energy values and increases for high energy values, for an example:
+\noindent where $w_i$ is the probability, $E_i$ is the energy for and $T$ is the temperature. One can immediately see that when the temperature increase, the probability decreases for low energy values. The probability decreases more for lower values of T, for an example:
 
 $$
 E_i = [-8,8] , T = [1.0,2.4]
@@ -372,11 +400,11 @@ $$
 w_{E_i}(T = 2.4) \approx [28, 5.3, 1, 0.2, 0.036]
 $$
 
-\noindent This means that the likelihood of flipping the orientation of the objects in the lattice should be higher for $T = 2.4$ when the energy starts accumulating to higher values, since the probability should be higher than a random number. The magnetization would then fluctuate more when $T = 2.4$ and this is observed on \figref{magneticrandom}, \figref{absmagneticrandom}, \figref{magneticupspin} and \figref{absmagneticupspin}. The same argument applies for the energy, when the temperature is high, the chance of flipping in higher for $T = 2.4$ compared $T = 1.0$ and one can see this on figure \figref{energyrandom} \figref{energyupspin}.
+\noindent This means that the likelihood of flipping the orientation of the objects in the lattice should be higher for $T = 2.4$ when the energy starts accumulating to higher values, since the probability should be higher than a random number. The magnetization would then fluctuate more when $T = 2.4$ and this is observed on \figref{magneticrandom}, \figref{absmagneticrandom}, \figref{magneticupspin} and \figref{absmagneticupspin}. The same argument applies for the energy, when the temperature is high, the chance of flipping is higher for $T = 2.4$ compared $T = 1.0$ and one can see this on figure \figref{energyrandom} \figref{energyupspin}.
 \\
-Following this train of thought, one would expect the rate of acceptance to be greater for higher temperature values and this can be seen by comparing the y-axis on \figref{acceptancerandom} and \figref{acceptanceupspin}. This is confirmed on \figref{acceptancetemp} where the acceptance increases when the temperature increases. When the initial matrix is randomized, the results for low temperatures vary, due to the initial starting condition. This is therefore not the case when the initial matrix only has upwards spin.
+Following this train of thought, one would expect the rate of acceptance to be greater for higher temperature values and this can be seen by comparing the y-axis on \figref{acceptancerandom} and \figref{acceptanceupspin}. This is confirmed on \figref{acceptancetemp} where the acceptance increases when the temperature increases. When the initial matrix is randomized, the results for low temperatures vary, due to the initial starting condition. This is therefore not the case when the initial matrix only has upwards spin since in this case, the acceptance does not have to stabilize.
 \\
-Looking at \figref{energyappearance}, one clearly sees that both graphs are skewed towards higher values, when one may have expected the curve to center around it's equilibrium state. This is not the case because 
+Looking at \figref{energyappearance}, one clearly sees that both graphs are skewed towards higher energy values, when one may have expected the curve to center around it's equilibrium state. 
 
 
 

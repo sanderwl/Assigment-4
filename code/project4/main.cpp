@@ -90,17 +90,18 @@ void openFiles2(){
 
 int main()
 {
-    openFiles2();
-    for(double T = 1.0; T <= 2.4; T+=1.4){
+    //openFiles2();
+    //for(double T = 1.0; T <= 2.4; T+=1.4){
+    double T = 1.0;
     double k = 1.0; //J/K
     double beta = 1.0/(k*T);
     double J = 1.0;
 
-    int mcs = 1000000;
+    int mcs = 100000;
 
-    int L = 20;
+    int L = 2;
 
-    openFiles(T);
+    //openFiles(T);
 
     mat A = ones(L,L);
     randomMatrix(A, L);
@@ -136,15 +137,16 @@ int main()
     for(int cycles=0;cycles<=mcs;cycles++){
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
+        /*
         int n=1000;
         if((cycles % n) == 0){
             toFile(Mtemp, Etemp, T, acceptance);
         }
-
+        */
 
     }
 
-    toFile2(acceptance, T);
+    //toFile2(acceptance, T);
 
     double averegeE = E/(mcs); //Average energy
     double averegeESquared = E_2/(mcs);
@@ -163,11 +165,11 @@ int main()
     cout << "Susceptibility: " << sus << " while T = " << to_string(T) << endl;
     cout << "Variance: " << averegeESquared - averegeE*averegeE << " while T = " << to_string(T) << endl;
 
-    outFile.close();
-    outFile2.close();
-    outFile4.close();
-    }
-    outFile3.close();
+    //outFile.close();
+    //outFile2.close();
+    //outFile4.close();
+    //}
+    //outFile3.close();
 
 
 

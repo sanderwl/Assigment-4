@@ -1,4 +1,4 @@
-addpath('C:\Users\sande\OneDrive\Dokumenter\GitHub\Assigment-4\code\build-project4-Desktop_Qt_5_9_2_MSVC2017_64bit-Debug') %Change to build path
+%addpath('C:\Users\sande\OneDrive\Dokumenter\GitHub\Assigment-4\code\build-project4-Desktop_Qt_5_9_2_MSVC2017_64bit-Debug') %Change to build path
 
 %Temperature vector
 Temp = load('temp.txt');
@@ -15,10 +15,10 @@ M60 = load('magnetic60.txt');
 M80 = load('magnetic80.txt');
 M100 = load('magnetic100.txt');
 %Specific heat
-Heat40 = load('heat40');
-Heat60 = load('heat60');
-Heat80 = load('heat80');
-Heat100 = load('heat100');
+Heat40 = load('heat40.txt');
+Heat60 = load('heat60.txt');
+Heat80 = load('heat80.txt');
+Heat100 = load('heat100.txt');
 %Susceptibility
 Sus40 = load('sus40.txt');
 Sus60 = load('sus60.txt');
@@ -30,11 +30,11 @@ Sus100 = load('sus100.txt');
 %Energy plots
 figure(1)
 hold on
-plot(Temp, E40)
-plot(Temp, E60)
-plot(Temp, E80)
-plot(Temp, E100)
-legend('40x40, 60x60, 80x80, 100x100')
+plot(Temp, -E40)
+plot(Temp, -E60)
+plot(Temp, -E80)
+plot(Temp, -E100)
+legend('40x40', '60x60', '80x80', '100x100')
 grid on
 xlabel('Temperature')
 ylabel('Energy')
@@ -47,7 +47,7 @@ plot(Temp, M40)
 plot(Temp, M60)
 plot(Temp, M80)
 plot(Temp, M100)
-legend('40x40, 60x60, 80x80, 100x100')
+legend('40x40', '60x60', '80x80', '100x100')
 grid on
 xlabel('Temperature')
 ylabel('Magnetization')
@@ -60,7 +60,7 @@ plot(Temp, Heat40)
 plot(Temp, Heat60)
 plot(Temp, Heat80)
 plot(Temp, Heat100)
-legend('40x40, 60x60, 80x80, 100x100')
+legend('40x40', '60x60', '80x80', '100x100')
 grid on
 xlabel('Temperature')
 ylabel('Specific heat')
@@ -73,7 +73,7 @@ plot(Temp, Sus40)
 plot(Temp, Sus60)
 plot(Temp, Sus80)
 plot(Temp, Sus100)
-legend('40x40, 60x60, 80x80, 100x100')
+legend('40x40', '60x60', '80x80', '100x100')
 grid on
 xlabel('Temperature')
 ylabel('Susceptibility')
