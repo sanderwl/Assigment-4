@@ -18,11 +18,14 @@ xlabel('Energy value')
 ylabel('Number of appearances')
 title('How many times an energy value appears with 1 000 000 MC cycles with T = 1.0 and random initial matrix')
 
-figure(2) %T = 2.4
+figure(2) %T = 2.
+hold on
 plot(edgesT24,countsT24)
+plot([-497 -497], ylim)
 grid on
 xlabel('Energy value')
 ylabel('Number of appearances')
+legend('Distribution', 'Equilabrium state')
 title('How many times an energy value appears with 1 000 000 MC cycles with T = 2.4 and random initial matrix')
 
 %%

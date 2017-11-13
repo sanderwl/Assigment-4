@@ -27,14 +27,14 @@ plot(mcE,E)
 grid on
 xlabel('number of mc cycles')
 ylabel('Energy')
-title('Energy for T = 1.0 and all initial spins up')
+title('Energy for T = 1.0 and and random initial matrix')
 
 figure(3) %T = 2.4
 plot(mcE2,E2)
 grid on
 xlabel('number of mc cycles')
 ylabel('Energy')
-title('Energy for T = 2.4 and all initial spins up')
+title('Energy for T = 2.4 and and random initial matrix')
 
 %Magnetization plots
 figure(4) %T = 1.0
@@ -42,14 +42,14 @@ plot(mcM,M)
 grid on
 xlabel('number of mc cycles')
 ylabel('Magnetization')
-title('Magnetization for T = 1.0 and all initial spins up')
+title('Magnetization for T = 1.0 and random initial matrix')
 
 figure(5) %T = 2.4
-plot(mcM2,-M2)
+plot(mcM2,M2)
 grid on
 xlabel('number of mc cycles')
 ylabel('Magnetization')
-title('Magnetization for T = 2.4 and all initial spins up')
+title('Magnetization for T = 2.4 and and random initial matrix')
 
 %Abs Mag Plotter
 figure(6) %T = 1.0

@@ -103,7 +103,7 @@ int main()
     openFiles(T);
 
     mat A = ones(L,L);
-    //randomMatrix(A, L);
+    randomMatrix(A, L);
     //cout << A << endl;
 
     //Initial values of the temporary energy
@@ -136,7 +136,7 @@ int main()
     for(int cycles=0;cycles<=mcs;cycles++){
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
-        int n=1;
+        int n=1000;
         if((cycles % n) == 0){
             toFile(Mtemp, Etemp, T, acceptance);
         }
