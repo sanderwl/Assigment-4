@@ -9,8 +9,9 @@ E40 = load('energy40.txt');
 E60 = load('energy60.txt');
 E80 = load('energy80.txt');
 E100 = load('energy100.txt');
+
 %Magnetization
-M40 = load('magnetic40.txt');
+M40 = load('magnetic40.txt');   
 M60 = load('magnetic60.txt');
 M80 = load('magnetic80.txt');
 M100 = load('magnetic100.txt');
@@ -24,6 +25,21 @@ Sus40 = load('sus40.txt');
 Sus60 = load('sus60.txt');
 Sus80 = load('sus80.txt');
 Sus100 = load('sus100.txt');
+
+%%
+
+figure(11)
+hold on
+plot(Temp,E40)
+
+figure(12)
+plot(Temp,M40)
+
+figure(13)
+plot(Temp,Sus40)
+
+figure(14)
+plot(Temp,Heat40)
 
 %%
 

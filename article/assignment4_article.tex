@@ -203,59 +203,37 @@ $<X>$ & 0.016004 & 0.0153613 & 100 000\\
 
 \begin{figure}[H]
 \centerline{
-\includegraphics[width=0.7\textwidth]{energyT1random}
-\includegraphics[width=0.7\textwidth]{energyT24random}
+\includegraphics[width=0.7\textwidth]{energy1T}
 }
-\caption{Energy versus Monte Carlo cycles for T = 1.0 and T = 2.4 with a random initial matrix}
-\label{fig:energyrandom}
+\caption{Energy versus Monte Carlo cycles for T = 1.0}
+\label{fig:energy1T}
 \end{figure}
 
 \begin{figure}[H]
 \centerline{
-\includegraphics[width=0.7\textwidth]{energyT1upspin}
-\includegraphics[width=0.7\textwidth]{energyT24upspin}
+\includegraphics[width=0.7\textwidth]{energy24T}
 }
-\caption{Energy versus Monte Carlo cycles for T = 1.0 and T = 2.4 with initial spin upwards}
-\label{fig:energyupspin}
+\caption{Energy versus Monte Carlo cycles for T = 2.4}
+\label{fig:energy24T}
 \end{figure}
 
 \begin{figure}[H]
 \centerline{
-\includegraphics[width=0.7\textwidth]{magnetizationT1random}
-\includegraphics[width=0.7\textwidth]{magnetizationT24random}
+\includegraphics[width=0.7\textwidth]{absmag1T}
 }
-\caption{Magnetization versus Monte Carlo cycles for T = 1.0 and T = 2.4 with a random initial matrix}
-\label{fig:magneticrandom}
+\caption{Absolute value of magnetization versus Monte Carlo cycles for T = 1.0}
+\label{fig:absmag1T}
 \end{figure}
 
 \begin{figure}[H]
 \centerline{
-\includegraphics[width=0.7\textwidth]{absmagnetizationT1random}
-\includegraphics[width=0.7\textwidth]{absmagnetizationT24random}
+\includegraphics[width=0.7\textwidth]{absmag24T}
 }
-\caption{Absolute value of magnetization versus 10 000 Monte Carlo cycles for T = 1.0 and T = 2.4 with a random initial matrix}
-\label{fig:absmagneticrandom}
+\caption{Absolute value of magnetization versus Monte Carlo cycles for T = 2.4}
+\label{fig:absmag24T}
 \end{figure}
 
-\begin{figure}[H]
-\centerline{
-\includegraphics[width=0.7\textwidth]{magnetizationT1upspin}
-\includegraphics[width=0.7\textwidth]{magnetizationT24upspin}
-}
-\caption{Magnetization versus Monte Carlo cycles for T = 1.0 and T = 2.4 with initial spin upwards}
-\label{fig:magneticupspin}
-\end{figure}
-
-\begin{figure}[H]
-\centerline{
-\includegraphics[width=0.7\textwidth]{absmagnetizationT1upspin}
-\includegraphics[width=0.7\textwidth]{absmagnetizationT24upspin}
-}
-\caption{Absolute value of magnetization versus 10 000 Monte Carlo cycles for T = 1.0 and T = 2.4 with initial spin upwards}
-\label{fig:absmagneticupspin}
-\end{figure}
-
-\noindent We can see from \figref{energyrandom}, \figref{energyupspin}, \figref{magneticrandom} and \figref{magneticupspin} that the mean energy and magnetization quickly approaches it's equilibrium state when the temperature equals $1$. There are of coarse fluctuations after the mean energy and magnetization has reached it's equilibrium state, but the value seems to jump back to to the equilibrium state. Another observation is that the mean energy and magnetization values are more unstable if one starts with an initial matrix where all the spins are oriented upwards. The values become even more unstable when the temperature is increased to 2.4, and also the value of the equilibrium state is changed.
+\noindent We can see from \figref{energy1T}, \figref{energy24T}, \figref{absmag1T} and \figref{absmag24T} that the mean energy and magnetization quickly approaches it's equilibrium state when the temperature equals $1$. There are of coarse fluctuations after the mean energy and magnetization has reached it's equilibrium state, but the value seems to jump back to to the equilibrium state. Another observation is that the mean energy and magnetization values are more unstable if one starts with an initial matrix where all the spins are oriented upwards. The values become even more unstable when the temperature is increased to 2.4, and also the value of the equilibrium state is changed.
 
 \begin{table} [H]
 \caption{EQ values for energy}
@@ -378,9 +356,9 @@ One can observe from \figref{energyappearance} that the curves are slightly skew
 {\LARGE\bf Discussion}
 \end{center}
 
-\noindent Comparing Table \ref{tab:table2} and to \figref{energyrandom} and \figref{energyupspin} one can observe that the graph approaches the equilibrium value stated in the table. This is very clear for $T = 1.0$, but when $T = 2.4$, the energy seems to be jump around more which is natural due to the increased energy in the system (kilde). Even though the value does not stay at equilibrium, the energy is still said to have reached equilibrium as stated in Table \ref{tab:table2} after a certain number of Monte Carlo cycles.
+\noindent Comparing Table \ref{tab:table2} and to \figref{energy1T} and \figref{energy24T} one can observe that the graph approaches the equilibrium value stated in the table. This is very clear for $T = 1.0$, but when $T = 2.4$, the energy seems to be jump around more which is natural due to the increased energy in the system (kilde). Even though the value does not stay at equilibrium, the energy is still said to have reached equilibrium as stated in Table \ref{tab:table2} after a certain number of Monte Carlo cycles.
 \\
-The magnetization plotted on \figref{magneticrandom} \figref{magneticupspin} show the magnetization without the absolute value and tells us that the magnetization actually jumps from positive to negative magnetization rather quickly and frequent after reaching equilibrium. The reason for this is because the energy values are equal for symmetric magnetization values around the equilibrium state (kilde). This makes it easy for the magnetization to make these kind of leaps. Looking at \figref{absmagneticrandom} and \figref{absmagneticupspin}, the absolute value of the magnetization, we lose the above understanding, but we get the correct values, as calculated in c++, for the equilibrium state.
+The magnetization plotted on \figref{absmag1T} \figref{absmag24T} show the magnetization without the absolute value and tells us that the magnetization actually jumps from positive to negative magnetization rather quickly and frequent after reaching equilibrium. The reason for this is because the energy values are equal for symmetric magnetization values around the equilibrium state (kilde). This makes it easy for the magnetization to make these kind of leaps. Looking at \figref{absmag1T} and \figref{absmag24T}, the absolute value of the magnetization, we lose the above understanding, but we get the correct values, as calculated in c++, for the equilibrium state.
 \\
 This statement is only true when $T = 2.4$, because one can observe that when $T = 1.0$ the magnetization does not fluctuate for positive and negative values. It seems as the magnetization reaches it equilibrium state and then shortly jump to some negative value, then right back to the equilibrium value. The reason for this is because the energy in the system is too low for the magnetization to make any great leaps (kilde). From the Boltzmann distribution we can see this mathematically:
 
@@ -400,7 +378,7 @@ $$
 w_{E_i}(T = 2.4) \approx [28, 5.3, 1, 0.2, 0.036]
 $$
 
-\noindent This means that the likelihood of flipping the orientation of the objects in the lattice should be higher for $T = 2.4$ when the energy starts accumulating to higher values, since the probability should be higher than a random number. The magnetization would then fluctuate more when $T = 2.4$ and this is observed on \figref{magneticrandom}, \figref{absmagneticrandom}, \figref{magneticupspin} and \figref{absmagneticupspin}. The same argument applies for the energy, when the temperature is high, the chance of flipping is higher for $T = 2.4$ compared $T = 1.0$ and one can see this on figure \figref{energyrandom} \figref{energyupspin}.
+\noindent This means that the likelihood of flipping the orientation of the objects in the lattice should be higher for $T = 2.4$ when the energy starts accumulating to higher values, since the probability should be higher than a random number. The magnetization would then fluctuate more when $T = 2.4$ and this is observed on \figref{absmag1T} and \figref{absmag24T}. The same argument applies for the energy, when the temperature is high, the chance of flipping is higher for $T = 2.4$ compared $T = 1.0$ and one can see this on figure \figref{energy1T} and \figref{energy24T}.
 \\
 Following this train of thought, one would expect the rate of acceptance to be greater for higher temperature values and this can be seen by comparing the y-axis on \figref{acceptancerandom} and \figref{acceptanceupspin}. This is confirmed on \figref{acceptancetemp} where the acceptance increases when the temperature increases. When the initial matrix is randomized, the results for low temperatures vary, due to the initial starting condition. This is therefore not the case when the initial matrix only has upwards spin since in this case, the acceptance does not have to stabilize.
 \\

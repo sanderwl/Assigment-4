@@ -11,20 +11,21 @@ uniform_real_distribution<double> uniformDist(0.0,1.0);
 
 ofstream outFile, outFile2, outFile3, outFile4;
 
+//Using the c++ RNG
 double random(){
     return uniformDist(randomEngine);
 }
-
-void toFile(double Mtemp, double Etemp, double T, int acceptance){
-    outFile << Mtemp << ", " << endl;
-    outFile2 << Etemp << ", " << endl;
+//Printing magnetization, energy and acceptance to file
+void toFile(double M, double E, double T, int acceptance){
+    outFile << M << ", " << endl;
+    outFile2 << E << ", " << endl;
     outFile4 << acceptance << ", " << endl;
 }
-
+//Printing total number of acceptance per temperature value
 void toFile2(int acceptance, double T){
     outFile3 << T << ", " << acceptance << endl;
 }
-
+//Creating a random matrix
 mat randomMatrix(mat &A, int L){
 
     for(int i = 0; i < L; i++){
@@ -40,7 +41,7 @@ mat randomMatrix(mat &A, int L){
     return A;
 }
 
-
+//Metropolis algorithm
 void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, double &E_2, double &Etemp, double &M, double &M_2){
     int xp, xn, yp, yn;
     double deltaE;
@@ -61,7 +62,7 @@ void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, doub
                 A(xrand, yrand) *= -1;
                 Etemp += deltaE;
 
-                Mtemp += 2*A(xrand,yrand); //Mean magnetic moment
+                Mtemp += 2*A(xrand,yrand);
                 acceptance += 1;
 
             }
@@ -75,9 +76,9 @@ void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, doub
 
 
 void openFiles(double T){
-        string outFileName = "magnetization" + to_string(T) + ".txt";
-        string outFileName2 = "energy" + to_string(T) + ".txt";
-        string outFileName4 = "acceptanceMC" + to_string(T) + ".txt";
+        string outFileName = "magnetizationUP" + to_string(T) + ".txt";
+        string outFileName2 = "energyUP" + to_string(T) + ".txt";
+        string outFileName4 = "acceptanceMCUP" + to_string(T) + ".txt";
         outFile.open(outFileName);
         outFile2.open(outFileName2);
         outFile4.open(outFileName4);
@@ -90,21 +91,20 @@ void openFiles2(){
 
 int main()
 {
-    //openFiles2();
-    //for(double T = 1.0; T <= 2.4; T+=1.4){
-    double T = 1.0;
+    openFiles2();
+    for(double T = 1.0; T <= 2.4; T+=1.4){
     double k = 1.0; //J/K
     double beta = 1.0/(k*T);
     double J = 1.0;
 
-    int mcs = 100000;
+    int mcs = 1000000;
 
-    int L = 2;
+    int L = 20;
 
-    //openFiles(T);
+    openFiles(T);
 
     mat A = ones(L,L);
-    randomMatrix(A, L);
+    //randomMatrix(A, L);
     //cout << A << endl;
 
     //Initial values of the temporary energy
@@ -137,16 +137,16 @@ int main()
     for(int cycles=0;cycles<=mcs;cycles++){
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
-        /*
-        int n=1000;
+
+        int n=100;
         if((cycles % n) == 0){
-            toFile(Mtemp, Etemp, T, acceptance);
+            toFile(M/cycles, E/cycles, T, acceptance);
         }
-        */
+
 
     }
 
-    //toFile2(acceptance, T);
+    toFile2(acceptance, T);
 
     double averegeE = E/(mcs); //Average energy
     double averegeESquared = E_2/(mcs);
@@ -165,11 +165,11 @@ int main()
     cout << "Susceptibility: " << sus << " while T = " << to_string(T) << endl;
     cout << "Variance: " << averegeESquared - averegeE*averegeE << " while T = " << to_string(T) << endl;
 
-    //outFile.close();
-    //outFile2.close();
-    //outFile4.close();
-    //}
-    //outFile3.close();
+    outFile.close();
+    outFile2.close();
+    outFile4.close();
+    }
+    outFile3.close();
 
 
 
