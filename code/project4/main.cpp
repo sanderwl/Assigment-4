@@ -76,9 +76,9 @@ void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, doub
 
 
 void openFiles(double T){
-        string outFileName = "magnetizationUP" + to_string(T) + ".txt";
-        string outFileName2 = "energyUP" + to_string(T) + ".txt";
-        string outFileName4 = "acceptanceMCUP" + to_string(T) + ".txt";
+        string outFileName = "magnetization" + to_string(T) + ".txt";
+        string outFileName2 = "energy" + to_string(T) + ".txt";
+        string outFileName4 = "acceptanceMC" + to_string(T) + ".txt";
         outFile.open(outFileName);
         outFile2.open(outFileName2);
         outFile4.open(outFileName4);
@@ -104,7 +104,7 @@ int main()
     openFiles(T);
 
     mat A = ones(L,L);
-    //randomMatrix(A, L);
+    randomMatrix(A, L);
     //cout << A << endl;
 
     //Initial values of the temporary energy
@@ -138,11 +138,12 @@ int main()
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
 
-        int n=100;
-        if((cycles % n) == 0){
-            toFile(M/cycles, E/cycles, T, acceptance);
+        if(cycles >= 100000){ //Only values after equilibrum
+            //int n=1;
+            //if((cycles % n) == 0){
+                toFile(M/cycles, E/cycles, T, acceptance);
+            //}
         }
-
 
     }
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.2)  15 NOV 2017 15:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.2)  15 NOV 2017 20:16
 entering extended mode
 **./assignment4_article.tex
 (assignment4_article.tex
@@ -866,83 +866,98 @@ File: absmag24T.jpg Graphic file (type jpg)
  <use absmag24T.jpg>
 Package pdftex.def Info: absmag24T.jpg used on input line 231.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
- [8 <./absmag1T.jpg> <./absmag24T.jpg>]
-<acceptanceMCT1random.jpg, id=64, 1927.2pt x 989.6975pt>
+
+<magnetizationT24random.jpg, id=53, 1927.2pt x 989.6975pt>
+File: magnetizationT24random.jpg Graphic file (type jpg)
+
+<use magnetizationT24random.jpg>
+Package pdftex.def Info: magnetizationT24random.jpg used on input line 239.
+(pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
+
+<magnetizationT1random.jpg, id=54, 1927.2pt x 989.6975pt>
+File: magnetizationT1random.jpg Graphic file (type jpg)
+
+<use magnetizationT1random.jpg>
+Package pdftex.def Info: magnetizationT1random.jpg used on input line 246.
+(pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
+ [8 <./absmag1T.jpg> <./absmag24T.jpg> <./magnetizationT24random.jpg>]
+<acceptanceMCT1random.jpg, id=66, 1927.2pt x 989.6975pt>
 File: acceptanceMCT1random.jpg Graphic file (type jpg)
 
 <use acceptanceMCT1random.jpg>
-Package pdftex.def Info: acceptanceMCT1random.jpg used on input line 280.
+Package pdftex.def Info: acceptanceMCT1random.jpg used on input line 295.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
 
-<acceptanceMCT24random.jpg, id=65, 1927.2pt x 989.6975pt>
+<acceptanceMCT24random.jpg, id=67, 1927.2pt x 989.6975pt>
 File: acceptanceMCT24random.jpg Graphic file (type jpg)
 
 <use acceptanceMCT24random.jpg>
-Package pdftex.def Info: acceptanceMCT24random.jpg used on input line 280.
+Package pdftex.def Info: acceptanceMCT24random.jpg used on input line 295.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
-
-<acceptanceMCT1upspin.jpg, id=66, 1927.2pt x 989.6975pt>
+ [9 <./magnetizationT1random.jpg>]
+<acceptanceMCT1upspin.jpg, id=75, 1927.2pt x 989.6975pt>
 File: acceptanceMCT1upspin.jpg Graphic file (type jpg)
 
 <use acceptanceMCT1upspin.jpg>
-Package pdftex.def Info: acceptanceMCT1upspin.jpg used on input line 289.
+Package pdftex.def Info: acceptanceMCT1upspin.jpg used on input line 304.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
 
-<acceptanceMCT24upspin.jpg, id=67, 1927.2pt x 989.6975pt>
+<acceptanceMCT24upspin.jpg, id=76, 1927.2pt x 989.6975pt>
 File: acceptanceMCT24upspin.jpg Graphic file (type jpg)
 
 <use acceptanceMCT24upspin.jpg>
-Package pdftex.def Info: acceptanceMCT24upspin.jpg used on input line 289.
+Package pdftex.def Info: acceptanceMCT24upspin.jpg used on input line 304.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
 
-<acceptanceVStrandom.jpg, id=68, 1927.2pt x 989.6975pt>
+<acceptanceVStrandom.jpg, id=77, 1927.2pt x 989.6975pt>
 File: acceptanceVStrandom.jpg Graphic file (type jpg)
 
 <use acceptanceVStrandom.jpg>
-Package pdftex.def Info: acceptanceVStrandom.jpg used on input line 298.
+Package pdftex.def Info: acceptanceVStrandom.jpg used on input line 313.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
 
-<acceptanceVStupspin.jpg, id=69, 1927.2pt x 989.6975pt>
+<acceptanceVStupspin.jpg, id=78, 1927.2pt x 989.6975pt>
 File: acceptanceVStupspin.jpg Graphic file (type jpg)
 
 <use acceptanceVStupspin.jpg>
-Package pdftex.def Info: acceptanceVStupspin.jpg used on input line 298.
+Package pdftex.def Info: acceptanceVStupspin.jpg used on input line 313.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
- [9 <./acceptanceMCT1random.jpg> <./acceptanceMCT24random.jpg> <./acceptanceMCT
-1upspin.jpg> <./acceptanceMCT24upspin.jpg>]
-<energyappearanceT24random.jpg, id=80, 1927.2pt x 989.6975pt>
+ [10 <./acceptanceMCT1random.jpg> <./acceptanceMCT24random.jpg> <./acceptanceMC
+T1upspin.jpg> <./acceptanceMCT24upspin.jpg> <./acceptanceVStrandom.jpg> <./acce
+ptanceVStupspin.jpg>]
+<energyappearanceT24random.jpg, id=89, 1927.2pt x 989.6975pt>
 File: energyappearanceT24random.jpg Graphic file (type jpg)
 
 <use energyappearanceT24random.jpg>
-Package pdftex.def Info: energyappearanceT24random.jpg used on input line 313.
+Package pdftex.def Info: energyappearanceT24random.jpg used on input line 328.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
 
-<energyappearanceT24upspin.jpg, id=81, 1927.2pt x 989.6975pt>
+<energyappearanceT24upspin.jpg, id=90, 1927.2pt x 989.6975pt>
 File: energyappearanceT24upspin.jpg Graphic file (type jpg)
 
 <use energyappearanceT24upspin.jpg>
-Package pdftex.def Info: energyappearanceT24upspin.jpg used on input line 313.
+Package pdftex.def Info: energyappearanceT24upspin.jpg used on input line 328.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
- [10 <./energyappearanceT24random.jpg> <./energyappearanceT24upspin.jpg> <./acc
-eptanceVStrandom.jpg> <./acceptanceVStupspin.jpg>] [11] [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 391.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 391.
+ [11 <./energyappearanceT24random.jpg> <./energyappearanceT24upspin.jpg>] [12] 
+[13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 419.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 419.
  (assignment4_article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 391.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 391.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 419.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 419.
 Package rerunfilecheck Info: File `assignment4_article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 391.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 419.
  ) 
 Here is how much of TeX's memory you used:
- 9879 strings out of 493323
- 144596 string characters out of 3139066
- 250163 words of memory out of 3000000
- 13258 multiletter control sequences out of 15000+200000
+ 9896 strings out of 493323
+ 144981 string characters out of 3139066
+ 251423 words of memory out of 3000000
+ 13269 multiletter control sequences out of 15000+200000
  8702 words of font info for 33 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,8n,40p,1444b,351s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,8n,40p,1454b,326s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
@@ -952,9 +967,9 @@ nts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.p
 fb>
-Output written on assignment4_article.pdf (13 pages, 1199517 bytes).
+Output written on assignment4_article.pdf (14 pages, 1378904 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 165 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

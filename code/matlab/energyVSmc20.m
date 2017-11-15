@@ -12,11 +12,6 @@ mcM2 = 100*linspace(1,length(M2),length(M2));
 E2 = load('energy2.400000.txt'); %T = 2.4
 E2U = load('energyUP2.400000.txt'); %T = 2.4
 mcE2 = 100*linspace(1,length(E2),length(E2));
-Acc = load('TempAcceptance.txt');
-A = load('acceptanceMC1.000000.txt');
-mcA = 100*linspace(1,length(A),length(A));
-A2 = load('acceptanceMC2.400000.txt');
-mcA2 = 100*linspace(1,length(A2),length(A2));
 
 %%
 
@@ -63,27 +58,5 @@ xlabel('number of mc cycles')
 ylabel('Magnetization')
 title('Absolute value of magnetization for T = 2.4')
 
-%%
-%Acceptance plot
-figure(8)
-plot(Acc(:,1),Acc(:,2))
-grid on
-xlabel('Temperature')
-ylabel('Acceptance')
-title('Acceptance for mcs = 1000 and random initial matrix')
-
-figure(9)
-plot(mcA,A)
-grid on
-xlabel('number of mc cycles')
-ylabel('Acceptance')
-title('Acceptance for T = 1.0 and random initial matrix')
-
-figure(10)
-plot(mcA2,A2)
-grid on
-xlabel('Number of mc cycles')
-ylabel('Acceptance')
-title('Acceptance for T = 2.4 and random initial matrix')
 
 

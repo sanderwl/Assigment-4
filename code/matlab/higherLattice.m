@@ -31,15 +31,19 @@ Sus100 = load('sus100.txt');
 figure(11)
 hold on
 plot(Temp,E40)
+title('Energy')
 
 figure(12)
 plot(Temp,M40)
+title('Magnetization')
 
 figure(13)
 plot(Temp,Sus40)
+title('Susceptibility')
 
 figure(14)
 plot(Temp,Heat40)
+title('Specific heat')
 
 %%
 
