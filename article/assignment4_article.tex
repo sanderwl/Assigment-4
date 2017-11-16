@@ -38,8 +38,7 @@
 		{Å}{{\AA}}1
 		{Ø}{{\O}}1
 	}
-\usepackage{setspace}
-\doublespacing
+
 \usepackage{bm}
 \usepackage{hyperref}
 
@@ -55,11 +54,31 @@ Sander W. Losnedahl\\
 University of Oslo, Autumn 2017
  
 \end{center}
+
+\begin{center}
+{\Large\bf Abstract}
+\end{center}
+
+
 \newpage
 
 \begin{center}
 {\LARGE\bf Introduction}
 \end{center}
+
+\noindent This paper will look at the popular Ising model which can determine phase transitions of a given lattice by first knowing a critical temperature. The model is however restricted in such a way that objects in the lattice can only have two values, in a so called binary system. In this paper, these two values represent upwards and downwards spin direction. Even though the model is restricted, it provides a good understanding of how phase transitions work.
+\\
+A simple 2 by 2 lattice is shown in \figref{22lattice}, where one can observe how the objects in the lattice interact with each other. The principle of the Ising model can be extended to higher order lattices as well, as will be done later in this paper. Critical temperature and phase transitions will also be looked at near the end of the paper after necessary calculations have been made.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{22lattice}
+\caption{A two by two lattice and how they interact using the Ising model}
+\label{fig:22lattice}
+\end{figure}
+
+
+
 
 \newpage
 
@@ -84,13 +103,7 @@ $$
 
 \noindent where J is the coupling constant and N is the total number of spins. $s_k$ and $s_l$ are the spins of two neighbouring objects in a lattice. Since we are working 2x2 lattice, the total number of combinations are given by $2^4 = 16$, considering we are working with the Ising model where the spins can only be $-1$ or $1$.
 \\
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{22lattice}
-\caption{A two by two lattice and how they interact using the Ising model}
-\label{fig:22lattice}
-\end{figure}
-\noindent From \figref{22lattice} we see how the Ising model works on a 2x2 lattice and from this the energy is calculated. One can observe that energy is non-zero on lattices where all the objects have the same spin ($-8J$) and where the two diagonals have opposite spin from each other ($8J$). All other settings have zero energy. Knowing the energy values we can calculate the mean energy $<E>$ with our specific partition function:
+From \figref{22lattice} we see how the Ising model works on a 2x2 lattice and from this the energy is calculated. One can observe that energy is non-zero on lattices where all the objects have the same spin ($-8J$) and where the two diagonals have opposite spin from each other ($8J$). All other settings have zero energy. Knowing the energy values we can calculate the mean energy $<E>$ with our specific partition function:
 
 $$
 <E> = \frac{1}{Z}\sum^{M}_{i = 1} E_i e^{-\beta E_i}
@@ -171,6 +184,20 @@ $$
 To be able to run the program in a time efficient manner, one needs to parallellize the program, and this was done by using MPI with 8 processors. Using MPI made the processing time much smaller, but it still took a long time for large lattice sizes.
 \\
 Raw data were produced using c++ while plotting and further calculations were done using MatLab. Further calculations include finding the probability distribution and the thermodynamic limit.  
+\\
+To calculate the critical temperature one have to use the following equation:
+
+$$
+T_c(L) - T_c(L=\infty) = aL^{-1/v}
+$$
+
+\noindent where $T_c$ is the critical temperature, L is the size of the lattice, $v = 1$ and a is a constant. $T_c(L)$ is known and we then get the following equations which can be solved numerically:
+
+$$
+T_c(L) = T_c(L = \infty) + aL^{-1}
+$$
+
+\noindent To solve this numerically, one simply have to solve the above equations for both $T_c(L = \infty)$ and $a$. Again, $T_c$ and $L$ is known. The equations were solved in MatLab using the least square rule as the linear regression. By doing this, the values for $T_c(L = \infty)$ and $a$ were found.
 
 \newpage
 
@@ -199,7 +226,9 @@ $<X>$ & 0.016004 & 0.0153613 & 100 000\\
 }
 \end{table}
 
-\noindent To get good results for mean energy and mean magnetization took very few Monte Carlo cycles, only about $10^4$. Then the values would be off only by a factor of about $10^{-3}$. The susceptibility and the specific heat took more Monte Carlo cycles to get a precise and stable result. Correct results started showing around $10^{5}$. For $10^4$, both the specific heat and susceptibility gave unstable results.
+\noindent To get good results for mean energy and mean magnetization took very few Monte Carlo cycles, only about $10^4$. Then the values would be off only by a factor of about $10^{-3}$. The susceptibility and the specific heat took more Monte Carlo cycles to get a precise and stable result. Correct results started showing around $10^{5}$. For $10^4$, both the specific heat and susceptibility gave unstable results. 
+\\
+The values shown in Table \ref{tab:table1} are representing each object in the lattice, but for the rest of the paper the values will be calculated for the entirety of the lattice. To transition from lattice wide values to single object values, one simply have to divide by the size of the lattice, $4$ in the above case, and multiply in the reverse case.
 
 \begin{figure}[H]
 \centerline{
@@ -232,7 +261,6 @@ $<X>$ & 0.016004 & 0.0153613 & 100 000\\
 \caption{Absolute value of magnetization versus Monte Carlo cycles for T = 2.4}
 \label{fig:absmag24T}
 \end{figure}
-
 \begin{figure}[H]
 \centerline{
 \includegraphics[width=0.7\textwidth]{magnetizationT24random}
@@ -321,7 +349,7 @@ If the initial spins are all positive like in \figref{acceptanceupspin}, the acc
 \\
 From \figref{acceptancetemp}, one can observe that the curves are not linear. The curve based on a randomly generated initial matrix is uneven at low temperatures, but smooths out when $T$ increases. When the initial matrix only consist positive spins, the curve is smooth throughout. These two plots are plotted to a maximum temperature of $3.0$, so one would have an idea of how the acceptance would evolve after $T = 2.4$. 
 
-\begin{figure}
+\begin{figure}[H]
 \centerline{
 \includegraphics[width=0.7\textwidth]{energyappearanceT24random}
 \includegraphics[width=0.7\textwidth]{energyappearanceT24upspin}
@@ -379,7 +407,7 @@ The run time for higher order lattices increased as the lattice size increased. 
 \hline
   80x80 & 7081.15\\
 \hline
-  100x100 & 11176.2\\
+  100x100 & 18630.9\\
 \hline 
   120x120 & ???\\
 \hline
@@ -387,6 +415,39 @@ The run time for higher order lattices increased as the lattice size increased. 
 }
 \end{table}
 
+\begin{figure}[H]
+\centerline{
+\includegraphics[width=0.7\textwidth]{energyVSt}
+}
+\caption{Mean energy versus temperature for $10^6$ Monte Carlo cycles for single lattice objects}
+\label{fig:energyVSt}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{
+\includegraphics[width=0.7\textwidth]{magnetizationVSt}
+}
+\caption{Mean magnetization versus temperature for $10^6$ Monte Carlo cycles for single lattice objects}
+\label{fig:magVSt}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{
+\includegraphics[width=0.7\textwidth]{heatVSt}
+}
+\caption{Specific heat versus temperature for $10^6$ Monte Carlo cycles for single lattice objects}
+\label{fig:heatVSt}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{
+\includegraphics[width=0.7\textwidth]{susceptibilityVSt}
+}
+\caption{Susceptibility versus temperature for $10^6$ Monte Carlo cycles for single lattice objects}
+\label{fig:susVSt}
+\end{figure}
+
+\noindent In the above figures, the respective values are representing an individual object in the lattice, not the entirety of the lattice. This was done because the graphs gave a clearer picture of what was going on. One can observe from \figref{energyVSt} that 
 
 \newpage
 
@@ -394,23 +455,23 @@ The run time for higher order lattices increased as the lattice size increased. 
 {\LARGE\bf Discussion}
 \end{center}
 
-\noindent Comparing Table \ref{tab:table2} and to \figref{energy1T} and \figref{energy24T} one can observe that the graph approaches the equilibrium value stated in the table. This is very clear for $T = 1.0$, but when $T = 2.4$, the energy seems to be oscillate which is natural due to the increased energy in the system (kilde). Even though the value slightly oscillates after reaching equilibrium, the energy is still said to have reached equilibrium as stated in Table \ref{tab:table2} after a certain number of Monte Carlo cycles.
+\noindent Comparing Table \ref{tab:table2} and to \figref{energy1T} and \figref{energy24T} one can observe that the graph approaches the equilibrium value stated in the table. This is very clear for $T = 1.0$, but when $T = 2.4$, the energy seems to be oscillate which is natural due to the increased temperature in the system (kilde). Even though the value slightly oscillates after reaching equilibrium, the energy is still said to have reached equilibrium as stated in Table \ref{tab:table2} after a certain number of Monte Carlo cycles.
 \\
 The mean magnetization plotted on \figref{mag24T} show the magnetization without the absolute value and tells us that the magnetization actually jumps from positive to negative magnetization, and vice versa, rather quickly and frequent after reaching equilibrium. The reason for this is because the energy values are equal for symmetric magnetization values around the equilibrium state (kilde). This makes it easy for the magnetization to make these kind of leaps. Looking at \figref{absmag1T} and \figref{absmag24T}, the absolute value of the magnetization, we lose the above understanding, but we get the correct values, as calculated in c++, for the equilibrium state.
 \\
-This statement is only true when $T = 2.4$, because one can observe on \figref{mag1T} that when $T = 1.0$ the magnetization does not fluctuate for positive and negative values. It seems as the magnetization reaches it equilibrium state and then shortly jump to some negative value, then right back to the equilibrium value. The reason for this is because the energy in the system is too low for the magnetization to make any great leaps (kilde). From the Boltzmann distribution we can see this mathematically:
+This statement is only true when $T = 2.4$, because one can observe on \figref{mag1T} that when $T = 1.0$ the magnetization does not fluctuate for positive and negative values. It seems as the magnetization reaches it equilibrium state and then shortly jump to some negative value, then right back to the equilibrium value. The reason for this is because the temperature in the system is too low for the magnetization to make any great leaps (kilde). From the Boltzmann distribution we can see this mathematically:
 
 $$
 w_i = e^{-E_i/T}
 $$
 
-\noindent where $w_i$ is the probability, $E_i$ is the energy for and $T$ is the temperature. One can immediately see that when the temperature increase, the probability decreases for low energy values.
+\noindent where $w_i$ is the probability, $E_i$ is the energy for and $T$ is the temperature. One can immediately see that when the temperature increase, the probability also increase for low energy values.
 
-\noindent This means that the likelihood of flipping the orientation of the objects in the lattice should be higher for $T = 2.4$ when the energy starts accumulating to higher values, since the probability of flipping should be higher than a random number. The magnetization would then fluctuate more when $T = 2.4$ and this is observed on \figref{absmag24T} and \figref{mag24T}. The same argument applies for the energy, when the temperature is high, the chance of flipping is higher for $T = 2.4$ compared $T = 1.0$ and one can see this on figure \figref{energy1T} and \figref{energy24T}.
+\noindent This means that the likelihood of flipping the orientation of the objects in the lattice should be higher for $T = 2.4$, since the probability of flipping should be higher than a random number. The magnetization and energy would then fluctuate more when $T = 2.4$ and this is observed on  \figref{energy1T},  \figref{energy24T}, \figref{absmag1T} and \figref{absmag24T}.
 \\
-Following this train of thought, one would expect the rate of acceptance to be greater for higher temperature values and this can be seen by comparing the y-axis on \figref{acceptancerandom} and \figref{acceptanceupspin}. This is confirmed on \figref{acceptancetemp} where the acceptance increases when the temperature increases. When the initial matrix is randomized, the results for low temperatures vary, due to the initial starting condition. Therefore, this does not happen when the initial matrix only has upwards spin since the acceptance does not have to stabilize.
+Following this train of thought, one would expect the rate of acceptance to be greater for higher temperature values and this can be seen by comparing the y-axis on \figref{acceptancerandom} and \figref{acceptanceupspin}. This is confirmed on \figref{acceptancetemp} where the acceptance increases when the temperature increases. When the initial matrix is randomized, the results for low temperatures vary, due to the initial starting condition. This does not happen when the initial matrix only has upwards spin since the acceptance does not have to stabilize.
 \\
-Looking at \figref{energyappearance}, one clearly sees that both graphs are skewed towards higher energy values, when one may have expected the curve to center around it's equilibrium state. 
+Looking at \figref{energyappearance}, one clearly sees that both graphs are skewed towards higher energy values, when one may have expected the curve to center around it's equilibrium state. The largest area is to the left of the equilibrium, meaning most values is accepted here in the Metropolis algorithm. This makes sense because more values are accepted when the energy is lower according to the Boltzmann distribution, which can be observed on the graphs on \figref{energyappearance}.
 
 
 
