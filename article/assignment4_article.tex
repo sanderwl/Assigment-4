@@ -447,7 +447,13 @@ The run time for higher order lattices increased as the lattice size increased. 
 \label{fig:susVSt}
 \end{figure}
 
-\noindent In the above figures, the respective values are representing an individual object in the lattice, not the entirety of the lattice. This was done because the graphs gave a clearer picture of what was going on. One can observe from \figref{energyVSt} that 
+\noindent In the above figures, the respective values are representing an individual object in the lattice, not the entirety of the lattice. This was done because the graphs gave a clearer picture of what was going on. One can observe from \figref{energyVSt} that the energy values are very similar, except for temperatures ranging from about $2.25 - 4$ where they deviate slightly before returning to the aforementioned state.
+\\
+From \figref{magVSt} we observe a similar feature as with the energy. The magnetization values seem to deviate from each other at around $T = 2.25$, but in this case, the values does no rejoin at a later temperature. However, the graphs seem to converge when $T$ approaches $3$, so maybe the values rejoin at a temperature larger than $3$.
+\\
+Specific heat values seem to exponentially increase towards $T = 2.3$ at \figref{heatVSt}, where it hits a peak. After this, the value exponentially decreases towards $0$. This is true for all lattice sizes, although the gradient of the different sizes are not equal at all temperatures, but this may be seen with a finer resolution.
+\\
+In \figref{susVSt}, one can observe a resembling feature for the susceptibility as in the specific heat case. The susceptibility values increase exponentially towards $T = 2.3$ followed by a exponential decrease towards $0$ when $T$ gets larger. However, the susceptibility seem to struggle and not increase as much around $T = 2.1$. The 40x40 case does not have a distinct peak at $T = 2.3$, as the peak seem to extend. A graph with finer resolution may be more informative.
 
 \newpage
 
@@ -472,6 +478,8 @@ $$
 Following this train of thought, one would expect the rate of acceptance to be greater for higher temperature values and this can be seen by comparing the y-axis on \figref{acceptancerandom} and \figref{acceptanceupspin}. This is confirmed on \figref{acceptancetemp} where the acceptance increases when the temperature increases. When the initial matrix is randomized, the results for low temperatures vary, due to the initial starting condition. This does not happen when the initial matrix only has upwards spin since the acceptance does not have to stabilize.
 \\
 Looking at \figref{energyappearance}, one clearly sees that both graphs are skewed towards higher energy values, when one may have expected the curve to center around it's equilibrium state. The largest area is to the left of the equilibrium, meaning most values is accepted here in the Metropolis algorithm. This makes sense because more values are accepted when the energy is lower according to the Boltzmann distribution, which can be observed on the graphs on \figref{energyappearance}.
+\\
+In \figref{energyVSt}, \figref{magVSt}, \figref{heatVSt} and \figref{susVSt} there is something suspicion at $T = 2.3$. The energy values split, but rejoins after, the magnetization splits and the specific heat and susceptibility peaks. It also happens that the critical temperature calculated in this paper is $T_c(L = \infty) \approx 2.269$
 
 
 
