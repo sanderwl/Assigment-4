@@ -75,13 +75,33 @@ plot(Temp, Sus40)
 plot(Temp, Sus60)
 plot(Temp, Sus80)
 plot(Temp, Sus100)
+plot([2.269 2.269], ylim)
 legend('40x40', '60x60', '80x80', '100x100')
 grid on
 xlabel('Temperature')
 ylabel('Susceptibility')
 title('Susceptibility versus temperature for different lattice sizes and 10^6 MC cycles')
 
+%%
 
+%Calculating the maximum value of specific heat and susceptibility
+HeatMax40 = max(Heat40);
+HeatMax60 = max(Heat60);
+HeatMax80 = max(Heat80);
+HeatMax100 = max(Heat100);
+
+SusMax40 = max(Sus40);
+SusMax60 = max(Sus60);
+SusMax80 = max(Sus80);
+SusMax100 = max(Sus100);
+
+
+HeatArray = [HeatMax40,HeatMax60,HeatMax80,HeatMax100];
+L = [40,60,80,100];
+
+figure(5)
+hold on
+plot((1./L),HeatArray)
 
 
 

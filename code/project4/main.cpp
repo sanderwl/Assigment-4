@@ -155,7 +155,7 @@ int main()
     double averegeM = (M)/(mcs);
     double averegeMSquared = (M_2/mcs);
 
-    double PF = 2*exp(-8*J*beta) + 2*exp(8*J*beta) + 12; //Partition function
+    //double PF = 2*exp(-8*J*beta) + 2*exp(8*J*beta) + 12; //Partition function
     double sus = beta*(averegeMSquared - averegeM*averegeM);
 
     double heat = (beta*(averegeESquared - averegeE*averegeE))/T;
