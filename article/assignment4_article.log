@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.2)  18 NOV 2017 18:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.2)  18 NOV 2017 20:20
 entering extended mode
 **./assignment4_article.tex
 (assignment4_article.tex
@@ -964,35 +964,49 @@ File: susceptibilityVSt.jpg Graphic file (type jpg)
 <use susceptibilityVSt.jpg>
 Package pdftex.def Info: susceptibilityVSt.jpg used on input line 443.
 (pdftex.def)             Requested size: 317.07614pt x 162.82489pt.
- [10 <./energyVSt.jpg> <./magnetizationVSt.jpg> <./heatVSt.jpg>] [11 <./suscept
-ibilityVSt.jpg>] [12] [13]
-Overfull \hbox (28.19986pt too wide) in paragraph at lines 506--507
+ [10 <./energyVSt.jpg> <./magnetizationVSt.jpg> <./heatVSt.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 448--449
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 454--455
+
+ []
+
+[11 <./susceptibilityVSt.jpg>] [12] [13]
+Overfull \hbox (28.19986pt too wide) in paragraph at lines 507--508
 [][]\OT1/cmr/m/n/10 https://github.com/CompPhysics/ComputationalPhysics/blob/ma
 ster/doc/Lectures/lectures2015.pdf[][], [down-
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 513.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 514.
 [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 513.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 514.
  (assignment4_article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 513.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 513.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 514.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 514.
 Package rerunfilecheck Info: File `assignment4_article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 513.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 514.
  ) 
 Here is how much of TeX's memory you used:
  10148 strings out of 493323
  149020 string characters out of 3139066
- 259938 words of memory out of 3000000
+ 260004 words of memory out of 3000000
  13509 multiletter control sequences out of 15000+200000
  9307 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,9n,40p,1454b,380s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,9n,40p,1454b,372s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
@@ -1002,7 +1016,7 @@ nts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.p
 fb>
-Output written on assignment4_article.pdf (14 pages, 1746292 bytes).
+Output written on assignment4_article.pdf (14 pages, 1746544 bytes).
 PDF statistics:
  197 PDF objects out of 1000 (max. 8388607)
  35 named destinations out of 1000 (max. 500000)

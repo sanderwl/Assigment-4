@@ -20,12 +20,11 @@ hold on
 plot(edges,counts)
 plot(edgesU,countsU)
 grid on
-axis equal
 xlabel('Energy value')
 ylabel('Number of appearances')
 title('How many times an energy value appears with 1 000 000 MC cycles with T = 1.0 and random initial matrix')
 
-figure(2) %T = 2.
+figure(2) %T = 2.4
 hold on
 plot(edgesT24,countsT24)
 plot(edgesT24U,countsT24U)
@@ -35,6 +34,5 @@ ylabel('Number of appearances')
 legend('Distribution random', 'Distribution up spin')
 title('How many times an energy value appears with 1 000 000 MC cycles with T = 2.4 and random initial matrix')
 
-%%
 variance1 = var(E)
 variance2 = var(E2)

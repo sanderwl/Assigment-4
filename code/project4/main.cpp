@@ -95,9 +95,8 @@ int main()
     for(double T = 1.0; T <= 2.4; T+=1.4){
     double k = 1.0; //J/K
     double beta = 1.0/(k*T);
-    double J = 1.0;
 
-    int mcs = 1000000;
+    int mcs = 100000;
 
     int L = 20;
 
@@ -138,13 +137,12 @@ int main()
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
 
-        if(cycles >= 100000){ //Only values after equilibrum
-            //int n=1;
-            //if((cycles % n) == 0){
-                toFile(M/cycles, E/cycles, T, acceptance);
-            //}
-        }
-
+        //if(cycles >= 100000){ //Only values after equilibrum
+            int n=1;
+            if((cycles % n) == 0){
+                toFile(Mtemp, Etemp, T, acceptance); //Divide by "cycles" to get the mean M and mean E
+            }
+        //}
     }
 
     toFile2(acceptance, T);
