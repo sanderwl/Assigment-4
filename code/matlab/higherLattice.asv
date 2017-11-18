@@ -6,25 +6,25 @@ Temp = load('temp.txt');
 %Files for lattice size 40*40 to 100x100
 %Energy
 E40 = load('energy40.txt')/(40*40);
-E60 = load('energy60.txt')/(40*40);
-E80 = load('energy80.txt')/(40*40);
-E100 = load('energy100.txt')/(40*40);
+E60 = load('energy60.txt')/(60*60);
+E80 = load('energy80.txt')/(80*80);
+E100 = load('energy100.txt')/(100*100);
 
 %Magnetization
 M40 = load('magnetic40.txt')/(40*40);   
-M60 = load('magnetic60.txt')/(40*40);
-M80 = load('magnetic80.txt')/(40*40);
-M100 = load('magnetic100.txt')/(40*40);
+M60 = load('magnetic60.txt')/(60*60);
+M80 = load('magnetic80.txt')/(80*80);
+M100 = load('magnetic100.txt')/(100*100);
 %Specific heat
-Heat40 = load('heat40.txt');
-Heat60 = load('heat60.txt');
-Heat80 = load('heat80.txt');
-Heat100 = load('heat100.txt');
+Heat40 = load('heat40.txt')/(40*40);
+Heat60 = load('heat60.txt')/(60*60);
+Heat80 = load('heat80.txt')/(80*80);
+Heat100 = load('heat100.txt')./(100*100);
 %Susceptibility
-Sus40 = load('sus40.txt');
-Sus60 = load('sus60.txt');
-Sus80 = load('sus80.txt') ;
-Sus100 = load('sus100.txt');
+Sus40 = load('sus40.txt')./(40*40);
+Sus60 = load('sus60.txt')./(60*60);
+Sus80 = load('sus80.txt')./(80*80);
+Sus100 = load('sus100.txt')./(100*100);
 
 
 %%
@@ -81,7 +81,26 @@ xlabel('Temperature')
 ylabel('Susceptibility')
 title('Susceptibility versus temperature for different lattice sizes and 10^6 MC cycles')
 
+%%
 
+%Calculating the maximum value of specific heat and susceptibility
+HeatMax40 = max(Heat40);
+HeatMax60 = max(Heat60);
+HeatMax80 = max(Heat80);
+HeatMax100 = max(Heat100);
+
+SusMax40 = max(Sus40);
+SusMax60 = max(Sus60);
+SusMax80 = max(Sus80);
+SusMax100 = max(Sus100);
+
+
+HeatArray = [HeatMax40,HeatMax60,HeatMax80,HeatMax100];
+L = [40,60,80,100];
+
+figure(5)
+hold on
+plot((1./L),HeatArray)
 
 
 

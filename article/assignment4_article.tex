@@ -41,6 +41,7 @@
 
 \usepackage{bm}
 \usepackage{hyperref}
+\usepackage[usenames, dvipsnames]{color}
 
 \begin{document}'
 \begin{center}
@@ -59,6 +60,7 @@ University of Oslo, Autumn 2017
 {\Large\bf Abstract}
 \end{center}
 
+\noindent A c++ program have been developed to calculate various thermodynamic variables of a given lattice of objects using the popular Ising model. Another program in MatLab have also been made to plot these variables against each other and do further calculations such as calculating the variance. The variables has shown to be very sensitive to temperature, rather than the initial configuration of the lattice. When the size of the lattice increases, the overall energy, magnetization, specific heat and susceptibility increase, but the critical temperature, and therefore the phase shift, always happens for $T = 2.3$.
 
 \newpage
 
@@ -69,6 +71,8 @@ University of Oslo, Autumn 2017
 \noindent This paper will look at the popular Ising model which can determine phase transitions of a given lattice by first knowing a critical temperature. The model is however restricted in such a way that objects in the lattice can only have two values, in a so called binary system. In this paper, these two values represent upwards and downwards spin direction. Even though the model is restricted, it provides a good understanding of how phase transitions work.
 \\
 A simple 2 by 2 lattice is shown in \figref{22lattice}, where one can observe how the objects in the lattice interact with each other. The principle of the Ising model can be extended to higher order lattices as well, as will be done later in this paper. Critical temperature and phase transitions will also be looked at near the end of the paper after necessary calculations have been made.
+\\
+The codes and files used in this project can be found at \href{https://github.com/sanderwl/Assigment-4}{\textcolor{blue}{https://github.com/sanderwl/Assigment-4}}
 
 \begin{figure}[H]
 \centering
@@ -194,10 +198,10 @@ $$
 \noindent where $T_c$ is the critical temperature, L is the size of the lattice, $v = 1$ and a is a constant. $T_c(L)$ is known and we then get the following equations which can be solved numerically:
 
 $$
-T_c(L) = T_c(L = \infty) + aL^{-1}
+T_c(L = \infty) = T_c(L) - aL^{-1}
 $$
 
-\noindent To solve this numerically, one simply have to solve the above equations for both $T_c(L = \infty)$ and $a$. Again, $T_c$ and $L$ is known. The equations were solved in MatLab using the least square rule as the linear regression. By doing this, the values for $T_c(L = \infty)$ and $a$ were found.
+\noindent Again, $T_c$ and $L$ is known. The critical temperature values were graphically found for the specific heat and susceptibility versus temperature plots for each lattice size. $1/L$ were then plotted against these critical temperatures. The least square rule was then used as the linear regression. By doing this, one would get a graph fitted towards the critical temperature points and where the graph hits the y-axis is the value of $T_c(L = \infty)$.
 
 \newpage
 
@@ -366,23 +370,23 @@ From \figref{acceptancetemp}, one can observe that the curves are not linear. Th
 \hline
   Temperature & Variance\\
 \hline
-  T=1.0 & 10.1022\\
+  T=1.0 & 0.0227441\\
 \hline
-  T=1.25 & 52.89957\\
+  T=1.25 & 0.129337\\
 \hline
-  T=1.50 & 181.264\\
+  T=1.50 & 0.444368\\
 \hline
-  T=1.75 & 478.217\\
+  T=1.75 & 1.18547\\
 \hline
-  T=2.0 & 1157.11\\
+  T=2.0 & 2.88226\\
 \hline 
-  T=2.25 & 3145.31\\
+  T=2.25 & 7.89626\\
 \hline 
-  T= 2.50 & 2479.27 \\
+  T= 2.50 & 6.18416 \\
 \hline 
-  T=2.75 & 1690.68\\
+  T=2.75 & 4.25249\\
 \hline
-  T=3.0 & 1445.93\\
+  T=3.0 & 3.61595\\
 \hline
 \end{tabular}
 }
@@ -393,23 +397,17 @@ From \figref{acceptancetemp}, one can observe that the curves are not linear. Th
 The run time for higher order lattices increased as the lattice size increased. The run times are shown in the table below:
 
 \begin{table}[H]
-\caption{Run time for different lattice sizes with $10^6$} \label{tab:table5}
+\caption{Run time for different lattice sizes with $10^6$ MC cycles and 20 different temperatures ranging from $T = 2.0$ to $T = 3.0$} \label{tab:table5}
 \centerline{
 \begin{tabular}{|c|c|}
 \hline
   Lattice size & Run time in seconds\\
-\hline
-  20x20 & ???\\
-\hline
-  40x40 & ???\\
 \hline
   60x60 & 3996.57\\
 \hline
   80x80 & 7081.15\\
 \hline
   100x100 & 18630.9\\
-\hline 
-  120x120 & ???\\
 \hline
 \end{tabular}
 }
@@ -453,7 +451,7 @@ From \figref{magVSt} we observe a similar feature as with the energy. The magnet
 \\
 Specific heat values seem to exponentially increase towards $T = 2.3$ at \figref{heatVSt}, where it hits a peak. After this, the value exponentially decreases towards $0$. This is true for all lattice sizes, although the gradient of the different sizes are not equal at all temperatures, but this may be seen with a finer resolution.
 \\
-In \figref{susVSt}, one can observe a resembling feature for the susceptibility as in the specific heat case. The susceptibility values increase exponentially towards $T = 2.3$ followed by a exponential decrease towards $0$ when $T$ gets larger. However, the susceptibility seem to struggle and not increase as much around $T = 2.1$. The 40x40 case does not have a distinct peak at $T = 2.3$, as the peak seem to extend. A graph with finer resolution may be more informative.
+In \figref{susVSt}, one can observe a resembling feature for the susceptibility as in the specific heat case. The susceptibility values increase exponentially towards $T = 2.3$ followed by a exponential decrease towards $0$ when $T$ gets larger. However, the susceptibility seem to struggle and not increase as much around $T = 2.1$. The 40x40 case does not have a distinct peak at $T = 2.3$, as the peak seem to extend. A graph with finer resolution may be more informative. 
 
 \newpage
 
@@ -461,25 +459,52 @@ In \figref{susVSt}, one can observe a resembling feature for the susceptibility 
 {\LARGE\bf Discussion}
 \end{center}
 
-\noindent Comparing Table \ref{tab:table2} and to \figref{energy1T} and \figref{energy24T} one can observe that the graph approaches the equilibrium value stated in the table. This is very clear for $T = 1.0$, but when $T = 2.4$, the energy seems to be oscillate which is natural due to the increased temperature in the system (kilde). Even though the value slightly oscillates after reaching equilibrium, the energy is still said to have reached equilibrium as stated in Table \ref{tab:table2} after a certain number of Monte Carlo cycles.
+\noindent Comparing Table \ref{tab:table2} and to \figref{energy1T} and \figref{energy24T} one can observe that the graph approaches the equilibrium value stated in the table. This is very clear for $T = 1.0$, but when $T = 2.4$, the energy seems to be oscillate which is natural due to the increased temperature in the system (kilde). Even though the value slightly oscillates after reaching equilibrium, the energy is still said to have reached equilibrium, which value is given in Table \ref{tab:table2} after a certain number of Monte Carlo cycles.
 \\
-The mean magnetization plotted on \figref{mag24T} show the magnetization without the absolute value and tells us that the magnetization actually jumps from positive to negative magnetization, and vice versa, rather quickly and frequent after reaching equilibrium. The reason for this is because the energy values are equal for symmetric magnetization values around the equilibrium state (kilde). This makes it easy for the magnetization to make these kind of leaps. Looking at \figref{absmag1T} and \figref{absmag24T}, the absolute value of the magnetization, we lose the above understanding, but we get the correct values, as calculated in c++, for the equilibrium state.
+The mean magnetization plotted on \figref{mag24T} show the magnetization without the absolute value and tells us that the magnetization actually jumps from positive to negative magnetization, and vice versa, rather quickly and frequent after reaching equilibrium. The reason for this is because the energy values are equal for symmetric magnetization values around the equilibrium state. This makes it easy for the magnetization to make these kind of leaps. Looking at \figref{absmag1T} and \figref{absmag24T}, the absolute value of the magnetization, we lose the above understanding, but we get the correct equilibrium values as calculated in c++.
 \\
-This statement is only true when $T = 2.4$, because one can observe on \figref{mag1T} that when $T = 1.0$ the magnetization does not fluctuate for positive and negative values. It seems as the magnetization reaches it equilibrium state and then shortly jump to some negative value, then right back to the equilibrium value. The reason for this is because the temperature in the system is too low for the magnetization to make any great leaps (kilde). From the Boltzmann distribution we can see this mathematically:
+This is only true when $T = 2.4$, because one can observe on \figref{mag1T} that when $T = 1.0$ the magnetization does not fluctuate for positive and negative values. It seems as the magnetization reaches it equilibrium state and then shortly jump to some value, then right back to the equilibrium value. The reason for this is because the temperature in the system is too low for the magnetization to make any great leaps (kilde). From the Boltzmann distribution we can see this mathematically:
 
 $$
 w_i = e^{-E_i/T}
 $$
 
-\noindent where $w_i$ is the probability, $E_i$ is the energy for and $T$ is the temperature. One can immediately see that when the temperature increase, the probability also increase for low energy values.
-
-\noindent This means that the likelihood of flipping the orientation of the objects in the lattice should be higher for $T = 2.4$, since the probability of flipping should be higher than a random number. The magnetization and energy would then fluctuate more when $T = 2.4$ and this is observed on  \figref{energy1T},  \figref{energy24T}, \figref{absmag1T} and \figref{absmag24T}.
+\noindent where $w_i$ is the probability, $E_i$ is the energy for and $T$ is the temperature. One can immediately see that when the temperature increase, the probability also increase for positive energy values.
+\\
+This means that the likelihood of flipping the orientation of the objects in the lattice should be higher for $T = 2.4$, since the probability of flipping should be higher than a random number. The magnetization and energy would then fluctuate more when $T = 2.4$ and this is observed on \figref{energy1T},  \figref{energy24T}, \figref{absmag1T} and \figref{absmag24T}.
 \\
 Following this train of thought, one would expect the rate of acceptance to be greater for higher temperature values and this can be seen by comparing the y-axis on \figref{acceptancerandom} and \figref{acceptanceupspin}. This is confirmed on \figref{acceptancetemp} where the acceptance increases when the temperature increases. When the initial matrix is randomized, the results for low temperatures vary, due to the initial starting condition. This does not happen when the initial matrix only has upwards spin since the acceptance does not have to stabilize.
 \\
-Looking at \figref{energyappearance}, one clearly sees that both graphs are skewed towards higher energy values, when one may have expected the curve to center around it's equilibrium state. The largest area is to the left of the equilibrium, meaning most values is accepted here in the Metropolis algorithm. This makes sense because more values are accepted when the energy is lower according to the Boltzmann distribution, which can be observed on the graphs on \figref{energyappearance}.
+Looking at \figref{energyappearance}, one clearly sees that both graphs are skewed towards higher energy values, when one may have expected the curve to center around it's equilibrium state. The largest area is to the left of the equilibrium, meaning most values is accepted here in the Metropolis algorithm. This makes sense because more values are accepted when the energy is lower according to the Boltzmann distribution.
 \\
-In \figref{energyVSt}, \figref{magVSt}, \figref{heatVSt} and \figref{susVSt} there is something suspicion at $T = 2.3$. The energy values split, but rejoins after, the magnetization splits and the specific heat and susceptibility peaks. It also happens that the critical temperature calculated in this paper is $T_c(L = \infty) \approx 2.269$
+In \figref{energyVSt}, \figref{magVSt}, \figref{heatVSt} and \figref{susVSt} something suspicious is going on at $T = 2.3$. The energy values split, but rejoins after, the magnetization splits and the specific heat and susceptibility peaks. It so happens that the critical temperature calculated in this paper is $T_c(L = \infty) = 2.3$, and we know at the critical temperature, a phase change occurs. The phase change is the reason why the specific heat and susceptibility suddenly decrease after this temperature as well as the split in energy and magnetization. The phenomenon when the variables approach $0$ after critical temperature is called a critical phenomenon, as can be seen on \figref{heatVSt} and \figref{susVSt}. For an infinitely large lattice size, the specific heat and susceptibility are discontinues at the critical temperature, but this cannot be seen on these graphs (Jensen, 2015, page 431).
+\\
+Comparing \figref{heatVSt} and \figref{susVSt}, one can observe that the susceptibility has a "sharper" peak than the specific heat. Since specific heat is calculated using the energy and susceptibility using magnetization, the "sharpness" can be directly observed on \figref{magVSt} by observing that the derivative of the slope. One can also observe from the same figure that with increasing lattice size, the slope and its derivative also increase. One can therefore assume that with an infinite lattice size, the slope would become infinitely steep and approach zero quicker than for smaller lattice sizes. When the magnetization approaches zero after critical temperature, there has been a phase shift(Hjorth-Jensen, 2015).
+\\
+Splitting of the energy, \figref{energyVSt}, is a sign of the coexistence of two different phases in the split interval (Hjorth-Jensen, 2015, page 429). 
+\\
+From Table \ref{tab:table4} one can observe the different variance values which tells us how much the probability $P(E)$ is spreading. The variance seem to peak around 2.25, which is close the the analytical critical temperature. This means that the likelihood of the energy being in it's equilibrium state is the lowest at critical temperature. One may expect these variance values to increase as the size of the lattice increase.
+
+\begin{center}
+{\LARGE\bf Errors}
+\end{center}
+
+\noindent To recognize ones errors is crucial to understanding the results and the limitations when discussing said results. The main errors arising in this paper is related to long run times shown in Table \ref{tab:table5}, despite having parallellized the code. For instance, \figref{energyVSt}, \figref{magVSt}, \figref{heatVSt} and \figref{susVSt} does not show the exact critical temperature calculated analytically, due to having too low resolution. By increasing the number of temperature steps in the code, the numerical critical temperature would approach the exact analytical value, $2.269$, given in the project when $dt \rightarrow \infty$.
+
+\begin{center}
+{\LARGE\bf Conclusion}
+\end{center}
+
+\noindent The Ising model has proved to be reliable throughout this project. It gives a good understanding of the thermodynamic variables specific heat and susceptibility as well the energy and magnetization of the system. The Boltzmann probability distribution and its variance derived from this model also seemed solid. From the above results, the critical temperature and a phase change were found, proving the usefulness of the Ising model.
+
+\newpage
+
+\begin{center}
+{\LARGE\bf References}
+\end{center}
+
+\noindent - Hjorth-Jensen, M, (2015), Computational Physics, Lecture Notes Fall 2015, [Internet], Available from: \href{https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Lectures/lectures2015.pdf}{\textcolor{blue}{https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Lectures/lectures2015.pdf}}, [downloaded 05.11.2017]
+
 
 
 

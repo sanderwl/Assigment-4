@@ -29,12 +29,12 @@ figure(2) %T = 2.
 hold on
 plot(edgesT24,countsT24)
 plot(edgesT24U,countsT24U)
-plot([-497 -497], ylim)
 grid on
 xlabel('Energy value')
 ylabel('Number of appearances')
-legend('Distribution', 'Equilabrium state')
+legend('Distribution random', 'Distribution up spin')
 title('How many times an energy value appears with 1 000 000 MC cycles with T = 2.4 and random initial matrix')
 
 %%
-variance = var(E2)
+variance1 = var(E)
+variance2 = var(E2)

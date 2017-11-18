@@ -75,7 +75,6 @@ plot(Temp, Sus40)
 plot(Temp, Sus60)
 plot(Temp, Sus80)
 plot(Temp, Sus100)
-plot([2.269 2.269], ylim)
 legend('40x40', '60x60', '80x80', '100x100')
 grid on
 xlabel('Temperature')
