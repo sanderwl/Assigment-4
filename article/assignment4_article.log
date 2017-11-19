@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.2)  19 NOV 2017 20:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.2)  19 NOV 2017 21:22
 entering extended mode
 **./assignment4_article.tex
 (assignment4_article.tex
@@ -843,7 +843,12 @@ File: 22lattice.jpg Graphic file (type jpg)
  <use 22lattice.jpg>
 Package pdftex.def Info: 22lattice.jpg used on input line 80.
 (pdftex.def)             Requested size: 226.48395pt x 210.51009pt.
- [2 <./22lattice.jpg>] [3]
+ [2 <./22lattice.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
+
+ []
+
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
@@ -1070,12 +1075,16 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 523.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 523.
 Package rerunfilecheck Info: File `assignment4_article.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 523.
  ) 
 Here is how much of TeX's memory you used:
  10156 strings out of 493323
  149203 string characters out of 3139066
- 259171 words of memory out of 3000000
+ 259170 words of memory out of 3000000
  13514 multiletter control sequences out of 15000+200000
  9307 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1089,7 +1098,7 @@ nts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.p
 fb>
-Output written on assignment4_article.pdf (15 pages, 1825108 bytes).
+Output written on assignment4_article.pdf (15 pages, 1825098 bytes).
 PDF statistics:
  211 PDF objects out of 1000 (max. 8388607)
  37 named destinations out of 1000 (max. 500000)

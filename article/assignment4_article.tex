@@ -71,9 +71,9 @@ University of Oslo, Autumn 2017
 
 \noindent This paper will look at the popular two dimensional Ising model which can determine phase transitions of a given lattice by first knowing the critical temperature. The model is however restricted in such a way that objects in the lattice can only have two values, in a so called binary system. In this paper, these two values represent upwards and downwards spin direction. Even though the model is restricted, it provides a good understanding of how phase transitions work.
 \\
-A simple 2 by 2 lattice will be studied first and is shown in \figref{22lattice}, where one can observe how the objects in the lattice interact with each other. The principle of the Ising model will later be extended to higher order lattices as well. Critical temperature and phase transitions will also be looked at near the end of the paper after necessary calculations have been made using the Metropolis algorithm.
+\noindent A simple 2 by 2 lattice will be studied first and is shown in \figref{22lattice}, where one can observe how the objects in the lattice interact with each other. The principle of the Ising model will later be extended to higher order lattices as well. Critical temperature and phase transitions will also be looked at near the end of the paper after necessary calculations have been made using the Metropolis algorithm.
 \\
-The codes and files used in this project can be found at \href{https://github.com/sanderwl/Assigment-4}{\textcolor{blue}{https://github.com/sanderwl/Assigment-4}}
+\noindent The codes and files used in this project can be found at \href{https://github.com/sanderwl/Assigment-4}{\textcolor{blue}{https://github.com/sanderwl/Assigment-4}}
 
 \begin{figure}[H]
 \centering
@@ -103,9 +103,9 @@ $$
 E_i = -J\sum^{N}_{<kl>} s_ks_l
 $$
 
-\noindent where J is the coupling constant and N is the total number of spins. $s_k$ and $s_l$ are the spins of two neighbouring objects in a lattice. Since we are working 2x2 lattice, the total number of combinations are given by $2^4 = 16$, considering we are working with the Ising model where the spins can only be $-1$ or $1$.
-\\
-From \figref{22lattice} we see how the Ising model works on a 2x2 lattice and from this the energy is calculated. One can observe that energy is non-zero on lattices where all the objects have the same spin ($-8J$) and where the two diagonals have opposite spin from each other ($8J$). All other settings have zero energy. Knowing the energy values we can calculate the mean energy $<E>$ with our specific partition function:
+\noindent where J is the coupling constant and N is the total number of spins. $s_k$ and $s_l$ are the spins of two neighbouring objects in a lattice. Since we are working 2x2 lattice, the total number of combinations are given by $2^4 = 16$, considering we are working with the Ising model where the spins can only be $-1$ or $1$.\\
+
+\noindent From \figref{22lattice} we see how the Ising model works on a 2x2 lattice and from this the energy is calculated. One can observe that energy is non-zero on lattices where all the objects have the same spin ($-8J$) and where the two diagonals have opposite spin from each other ($8J$). All other settings have zero energy. Knowing the energy values we can calculate the mean energy $<E>$ with our specific partition function:
 
 $$
 <E> = \frac{1}{Z}\sum^{M}_{i = 1} E_i e^{-\beta E_i}
@@ -183,7 +183,7 @@ $$
 
 \noindent To compute the above values, a standard Metropolis algorithm were implemented. This algorithm takes an initial matrix and then decides to flip or not flip the current value at a random location in the matrix (lattice). The probability of when to flip or not is in this case given by the Boltzmann distribution $e^{-E_i / T}$. If the algorithm decides to flip, the computed energy at that position in the lattice is added to the total energy of the system. The same happens for the magnetization and initial values of the energy and magnetization is calculated beforehand. What initial matrix to use, that is a randomly generated matrix or a matrix with only positive spin, is determined by the user.\\
 
-After the Metropolis algorithm is finished, the cumulative energy, squared cumulative energy, cumulative magnetization and squared cumulative magnetization is calculated which is needed to later calculate the mean energy, mean magnetization, specific heat and susceptibility. This algorithm is based on random events and so one needs to perform the algorithm many times before the results are stable. Therefore the whole Metropolis algorithm is looped inside what is called a Monte Carlo loop. When the number of Monte Carlo cycles are increased, the more stable the results will be. However, many cycles require a lot of processing power when the number of cycles gets to around $10^6$.
+\noindent After the Metropolis algorithm is finished, the cumulative energy, squared cumulative energy, cumulative magnetization and squared cumulative magnetization is calculated which is needed to later calculate the mean energy, mean magnetization, specific heat and susceptibility. This algorithm is based on random events and so one needs to perform the algorithm many times before the results are stable. Therefore the whole Metropolis algorithm is looped inside what is called a Monte Carlo loop. When the number of Monte Carlo cycles are increased, the more stable the results will be. However, many cycles require a lot of processing power when the number of cycles gets to around $10^6$.
 \\
 To be able to run the program in a time efficient manner, one needs to parallellize the program, and this was done by using MPI with 8 processors. Using MPI made the processing time much smaller, but it still took a long time for large lattice sizes. The parallellized c++ program is found on GitHub, separate from the main program.
 \\
@@ -509,7 +509,7 @@ This means that the likelihood of flipping the orientation of the objects in the
 {\LARGE\bf Conclusion}
 \end{center}
 
-\noindent The two dimensional Ising model has proved to be reliable throughout this project. It gives a good understanding of the thermodynamic variables specific heat and susceptibility as well the energy and magnetization of the system. The algorithm based on the Metropolis and the Ising model also gets good results calculating these variables. The Boltzmann probability distribution and its variance derived from this model also seemed solid. From the above results, the critical temperature and a phase shift were found, proving the usefulness of the Ising model.
+\noindent The two dimensional Ising model has proved to be reliable throughout this project. It gives a good understanding of the thermodynamic variables specific heat and susceptibility as well the energy and magnetization of the system. The algorithm based on the Metropolis and the Ising model also gets good results calculating these variables. The Boltzmann probability distribution and its variance derived from this model also seemed solid. From the above results, the critical temperature and a second order phase shift were found, proving the usefulness of the Ising model.
 
 \newpage
 
@@ -517,7 +517,7 @@ This means that the likelihood of flipping the orientation of the objects in the
 {\LARGE\bf References}
 \end{center}
 
-\noindent - Hjorth-Jensen, M, (2015), Computational Physics, Lecture Notes Fall 2015, [Internet], Available from: \href{https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Lectures/lectures2015.pdf}{\textcolor{blue}{https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Lectures/lectures2015.pdf}}, [downloaded 05.11.2017]
+\noindent - Hjorth-Jensen, M. (2015), Computational Physics, Lecture Notes Fall 2015, [Internet], Available from: \href{https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Lectures/lectures2015.pdf}{\textcolor{blue}{https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Lectures/lectures2015.pdf}}, [downloaded 05.11.2017]
 
 
 \end{document}
