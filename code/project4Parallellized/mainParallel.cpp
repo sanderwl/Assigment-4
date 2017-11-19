@@ -7,6 +7,7 @@
 using namespace std;
 using namespace arma;
 
+//c++ random class
 random_device rd;
 mt19937 randomEngine(rd());
 uniform_real_distribution<double> uniformDist(0.0,1.0);
@@ -15,22 +16,21 @@ ofstream outFile, outFile2, outFile3, outFile4, outFile5;
 
 int numProcs, myRank;
 clock_t start,finish;
-
+//Creating random function to call
 double rrandom(){
     return uniformDist(randomEngine);
 }
-
+//Printing values to file
 void toFile(double Mtemp, double Etemp, double T, int acceptance){
     outFile << Mtemp << ", " << endl;
     outFile2 << Etemp << ", " << endl;
     outFile4 << acceptance << ", " << endl;
 }
-
+//Printing one value per temperature to file
 void toFile2(int acceptance, double T){
     outFile3 << T << ", " << acceptance << endl;
 }
-
-
+//Creating random matrix
 mat randomMatrix(mat &A, int L){
 
     for(int i = 0; i < L; i++){
@@ -45,8 +45,7 @@ mat randomMatrix(mat &A, int L){
     }
     return A;
 }
-
-
+//Metropolis algorithm
 void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, double &E_2, double &Etemp, double &M, double &M_2){
     int xp, xn, yp, yn;
     double deltaE;
@@ -75,8 +74,7 @@ void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, doub
     }
 
 }
-
-
+//Opening files
 void openFiles(){
         string outFileName = "energy100.txt";
         string outFileName2 = "magnetic100.txt";
@@ -89,6 +87,7 @@ void openFiles(){
         outFile4.open(outFileName4);
         outFile5.open(outFileName5);
 }
+//Writing only one value per teperature step to file
 void toFileBig(double averegeE, double averegeM, double heat, double sus, int L, int mcs, double T){
 
     outFile << averegeE << ", " << endl;
@@ -98,7 +97,7 @@ void toFileBig(double averegeE, double averegeM, double heat, double sus, int L,
     outFile5 << T  << ", " << endl;
 
 }
-
+//Opening more files
 void openFiles2(){
     string outFileName3 = "TempAcceptance.txt";
     outFile3.open(outFileName3);
@@ -119,13 +118,13 @@ int main(int argn, char* argv[])
     double k = 1.0; //J/K
     double beta = 1.0/(k*T);
 
-    int mcs = 1000000;
+    int mcs = 1000000; //Total number of Monte Carlo cycles
 
-    int L = 100;
+    int L = 100; //Lattice size
 
 
     mat A = ones(L,L);
-    randomMatrix(A, L);
+    randomMatrix(A, L); //Comment out to only have up spin in initial matrix
     //cout << A << endl;
 
     //Initial values of the temporary energy
@@ -136,16 +135,17 @@ int main(int argn, char* argv[])
             int xn = (x - 1 + L) % L;
             int yn = (y - 1 + L) % L;
 
-            Etemp -= A(x,y) * (  A(xn,y) + A(x, yn));
+            Etemp -= A(x,y) * (  A(xn,y) + A(x, yn)); //Initial energy
         }
     }
 
     double E = 0;
     double E_2 = 0;
-    double Mtemp = accu(A);
+    double Mtemp = accu(A); //Initial magnetization
     double M = 0;
     double M_2= 0;
 
+    //Boltzmann probability
     vec prob(17);
     for(int i=-8; i <= 8; i+=4){
         prob(i+8) = 0;
@@ -155,13 +155,14 @@ int main(int argn, char* argv[])
     }
 
     int acceptance = 0;
+    //Monte Carlo loop
     for(int cycles=0;cycles<=mcs;cycles++){
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
-//        int n=1;
-//        if((cycles % n) == 0){
-//            toFile(Mtemp, Etemp, T, acceptance);
-//        }
+        //int n=1;
+        //if((cycles % n) == 0){ //Only printing every n-th value
+            //toFile(Mtemp, Etemp, T, acceptance);
+        //}
         E += Etemp;
         E_2 += Etemp*Etemp;
         M += abs(Mtemp);
@@ -177,18 +178,18 @@ int main(int argn, char* argv[])
     //toFile2(acceptance, T);
 
     double averegeE = E/(mcs*numProcs); //Average energy
-    double averegeESquared = E_2/(mcs*numProcs);
+    double averegeESquared = E_2/(mcs*numProcs);//Average energy squared
 
-    double averegeM = M/(mcs*numProcs);
-    double averegeMSquared = M_2/(mcs*numProcs);
+    double averegeM = M/(mcs*numProcs); //Average magnetization
+    double averegeMSquared = M_2/(mcs*numProcs); //Average magnetization squared
 
     //double PF = 2*exp(-8*J*beta) + 2*exp(8*J*beta) + 12; //Partition function
-    double sus = beta*(averegeMSquared - averegeM*averegeM);
+    double sus = beta*(averegeMSquared - averegeM*averegeM); //Susceptibility
 
-    double heat = (beta*(averegeESquared - averegeE*averegeE))/T;
+    double heat = (beta*(averegeESquared - averegeE*averegeE))/T; //Specific heat
 
     if(myRank == 0) {
-        toFileBig(averegeE, averegeM, heat, sus, L, mcs, T);
+        toFileBig(averegeE, averegeM, heat, sus, L, mcs, T); //Writing one value per temperature step to file
     }
 
 /*
@@ -210,11 +211,6 @@ int main(int argn, char* argv[])
         outFile4.close();
         outFile5.close();
     }
-    /*
-    if(myRank == 0){
-        outFile7.close();
-    }
-    */
     finish = clock();
     double time = (double (finish)- double (start))/(CLOCKS_PER_SEC);
     cout << time << endl;

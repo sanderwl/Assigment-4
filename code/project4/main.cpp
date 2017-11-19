@@ -74,7 +74,7 @@ void MP(int L, mat &A, vec prob, int &acceptance, double &E, double &Mtemp, doub
     M_2 += Mtemp*Mtemp;
 }
 
-
+//Opening files
 void openFiles(double T){
         string outFileName = "magnetization" + to_string(T) + ".txt";
         string outFileName2 = "energy" + to_string(T) + ".txt";
@@ -96,14 +96,14 @@ int main()
     double k = 1.0; //J/K
     double beta = 1.0/(k*T);
 
-    int mcs = 100000;
+    int mcs = 100000; //Total number of Monte Carlo cycles
 
-    int L = 2;
+    int L = 2; //Lattice size
 
     //openFiles(T);
 
     mat A = ones(L,L);
-    randomMatrix(A, L);
+    randomMatrix(A, L); //Comment out to have an initial matrix with only up spins
     //cout << A << endl;
 
     //Initial values of the temporary energy
@@ -114,16 +114,17 @@ int main()
             int xn = (x - 1 + L) % L;
             int yn = (y - 1 + L) % L;
 
-            Etemp -= A(x,y) * (  A(xn,y) + A(x, yn));
+            Etemp -= A(x,y) * (  A(xn,y) + A(x, yn)); //Calculating the inital energy value
         }
     }
 
     double E = 0;
     double E_2 = 0;
-    double Mtemp = accu(A);
+    double Mtemp = accu(A); //Initial magnetization value
     double M = 0;
     double M_2= 0;
 
+    //Boltzmann probability
     vec prob(17);
     for(int i=-8; i <= 8; i+=4){
         prob(i+8) = 0;
@@ -133,13 +134,14 @@ int main()
     }
 
     int acceptance = 0;
+    //Monte Carlo loop
     for(int cycles=0;cycles<=mcs;cycles++){
         MP(L, A, prob, acceptance, E, Mtemp, E_2, Etemp, M, M_2);
 
 
         //if(cycles >= 100000){ //Only values after equilibrum
             //int n=1;
-            //if((cycles % n) == 0){
+            //if((cycles % n) == 0){ //Only writing every n-th output to file
                 //toFile(Mtemp, Etemp, T, acceptance); //Divide by "cycles" to get the mean M and mean E
             //}
         //}
@@ -148,15 +150,15 @@ int main()
     //toFile2(acceptance, T);
 
     double averegeE = E/(mcs); //Average energy
-    double averegeESquared = E_2/(mcs);
+    double averegeESquared = E_2/(mcs); //Average energy squared
 
-    double averegeM = (M)/(mcs);
-    double averegeMSquared = (M_2/mcs);
+    double averegeM = (M)/(mcs); //Average magnetization
+    double averegeMSquared = (M_2/mcs); //Average magnetization squared
 
     //double PF = 2*exp(-8*J*beta) + 2*exp(8*J*beta) + 12; //Partition function
-    double sus = beta*(averegeMSquared - averegeM*averegeM);
+    double sus = beta*(averegeMSquared - averegeM*averegeM); //Susceptibility
 
-    double heat = (beta*(averegeESquared - averegeE*averegeE))/T;
+    double heat = (beta*(averegeESquared - averegeE*averegeE))/T; //Specific heat
 
     cout << endl << "Average energy: " << averegeE << " while T = " << to_string(T) << endl;
     cout << "Average magnetization: " << averegeM << " while T = " << to_string(T) << endl;
