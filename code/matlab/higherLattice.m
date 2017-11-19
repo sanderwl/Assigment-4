@@ -1,4 +1,5 @@
-%addpath('C:\Users\sande\OneDrive\Dokumenter\GitHub\Assigment-4\code\build-project4-Desktop_Qt_5_9_2_MSVC2017_64bit-Debug') %Change to build path
+%addpath('C:\Users\sande\OneDrive\Dokumenter\GitHub\Assigment-4\code\build-project4-Desktop_Qt_5_9_2_MSVC2017_64bit-Debug')
+%The files needed are already in this folder
 
 %Temperature vector
 Temp = load('temp.txt');
@@ -9,7 +10,6 @@ E40 = load('energy40.txt')/(40*40);
 E60 = load('energy60.txt')/(60*60);
 E80 = load('energy80.txt')/(80*80);
 E100 = load('energy100.txt')/(100*100);
-
 %Magnetization
 M40 = load('magnetic40.txt')/(40*40);   
 M60 = load('magnetic60.txt')/(60*60);
@@ -84,23 +84,26 @@ title('Susceptibility versus temperature for different lattice sizes and 10^6 MC
 %%
 
 %Calculating the maximum value of specific heat and susceptibility
-HeatMax40 = max(Heat40);
-HeatMax60 = max(Heat60);
-HeatMax80 = max(Heat80);
-HeatMax100 = max(Heat100);
+[HM40, HI40] = max(Heat40);
+[HM60, HI60] = max(Heat60);
+[HM80, HI80] = max(Heat80);
+[HM100, HI100] = max(Heat100);
 
-SusMax40 = max(Sus40);
-SusMax60 = max(Sus60);
-SusMax80 = max(Sus80);
-SusMax100 = max(Sus100);
+[SM40, SI40] = max(Sus40);
+[SM60, SI60] = max(Sus60);
+[SM80, SI80] = max(Sus80);
+[SM100, SI100] = max(Sus100);
 
-
-HeatArray = [HeatMax40,HeatMax60,HeatMax80,HeatMax100]
+TempArray = [Temp(HI40),Temp(HI60),Temp(HI80),Temp(HI100)];
 L = [40,60,80,100];
 
 figure(5)
-hold on
-plot((1./L),HeatArray)
+plot((1./L),TempArray)
+grid on
+xlabel('1/L')
+ylabel('Critical temperature')
+title('Critical temperature against 1/L')
+
 
 
 

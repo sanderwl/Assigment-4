@@ -1,4 +1,5 @@
 addpath('C:\Users\sande\OneDrive\Dokumenter\GitHub\Assigment-4\code\build-project4-Desktop_Qt_5_9_2_MSVC2017_64bit-Debug') %Change to build path
+
 E = load('energy1.000000.txt');
 EU = load('energyUP1.000000.txt');
 E2 = load('energy2.400000.txt');
@@ -15,6 +16,7 @@ countsT24 = histc(E2(:), edgesT24);
 countsT24U = histc(E2U(:), edgesT24U);
 
 %%
+
 figure(1) %T = 1.0
 hold on
 plot(edges,counts)

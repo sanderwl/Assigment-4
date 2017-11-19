@@ -8,6 +8,8 @@ A2 = load('acceptanceMC2.400000.txt');
 A2U = load('acceptanceMCUP2.400000.txt');
 mcA2 = 100*linspace(1,length(A2),length(A2));
 
+%%
+
 %Acceptance plot
 figure(1)
 plot(Acc(:,1),Acc(:,2))

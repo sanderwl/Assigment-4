@@ -36,7 +36,7 @@ xlabel('number of mc cycles')
 ylabel('Energy')
 title('Energy of lattice for T = 2.4')
 
-%Abs Mag Plotter
+%Absolute magnetization Plotter
 figure(3) %T = 1.0
 hold on
 plot(mcM,M)
