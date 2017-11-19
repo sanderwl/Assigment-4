@@ -95,7 +95,7 @@ SusMax80 = max(Sus80);
 SusMax100 = max(Sus100);
 
 
-HeatArray = [HeatMax40,HeatMax60,HeatMax80,HeatMax100];
+HeatArray = [HeatMax40,HeatMax60,HeatMax80,HeatMax100]
 L = [40,60,80,100];
 
 figure(5)

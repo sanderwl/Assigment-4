@@ -91,16 +91,16 @@ void openFiles2(){
 
 int main()
 {
-    openFiles2();
+    //openFiles2();
     for(double T = 1.0; T <= 2.4; T+=1.4){
     double k = 1.0; //J/K
     double beta = 1.0/(k*T);
 
     int mcs = 100000;
 
-    int L = 20;
+    int L = 2;
 
-    openFiles(T);
+    //openFiles(T);
 
     mat A = ones(L,L);
     randomMatrix(A, L);
@@ -138,14 +138,14 @@ int main()
 
 
         //if(cycles >= 100000){ //Only values after equilibrum
-            int n=1;
-            if((cycles % n) == 0){
-                toFile(Mtemp, Etemp, T, acceptance); //Divide by "cycles" to get the mean M and mean E
-            }
+            //int n=1;
+            //if((cycles % n) == 0){
+                //toFile(Mtemp, Etemp, T, acceptance); //Divide by "cycles" to get the mean M and mean E
+            //}
         //}
     }
 
-    toFile2(acceptance, T);
+    //toFile2(acceptance, T);
 
     double averegeE = E/(mcs); //Average energy
     double averegeESquared = E_2/(mcs);
@@ -164,11 +164,11 @@ int main()
     cout << "Susceptibility: " << sus << " while T = " << to_string(T) << endl;
     cout << "Variance: " << averegeESquared - averegeE*averegeE << " while T = " << to_string(T) << endl;
 
-    outFile.close();
-    outFile2.close();
-    outFile4.close();
+    //outFile.close();
+    //outFile2.close();
+    //outFile4.close();
     }
-    outFile3.close();
+    //outFile3.close();
 
 
 
